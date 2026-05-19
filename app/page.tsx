@@ -126,25 +126,20 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
-                Rigorous curation
+                A higher standard
               </span>
               <h2 className="text-4xl md:text-5xl font-display font-light text-white leading-tight mb-6">
-                Most opportunities don&apos;t meet the standard.
-                <br />
-                <em className="not-italic text-white/35">
-                  That&apos;s by design.
-                </em>
+                ImpactX focuses on opportunities where credible impact and
+                commercial performance can reinforce each other.
               </h2>
               <div className="text-white/60 leading-relaxed">
                 <p>
-                  The impact investment market is expanding, but consistent,
-                  decision-grade information remains scarce. Most opportunities
-                  carry credible-sounding sustainability language with little
-                  structural accountability. ImpactX reviews private-market
-                  opportunities against a defined standard before listing: a
-                  Theory of Change, specific outcome KPIs, and minimum assurance
-                  criteria as conditions of entry. The result is a smaller,
-                  comparable, and independently verifiable set.
+                  Credible impact investing demands the same rigour applied to
+                  financial analysis. ImpactX reviews each opportunity against a
+                  defined standard before listing: a Theory of Change, specific
+                  outcome KPIs, and minimum assurance criteria. The result is a
+                  curated set of private-market opportunities where impact is
+                  measurable, comparable, and independently verified.
                 </p>
               </div>
             </div>
