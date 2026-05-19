@@ -131,8 +131,15 @@ function FieldRow({ label, value }: { label: string; value: string | null }) {
   );
 }
 
+const intensityConfig = {
+  High:        { dots: 3, label: "High" },
+  Moderate:    { dots: 2, label: "Moderate" },
+  Exploratory: { dots: 1, label: "Exploratory" },
+};
+
 function OpportunityCard({ opp }: { opp: Opportunity }) {
   const { accent } = opp.heroPalette;
+  const intensity = opp.impactIntensity ? intensityConfig[opp.impactIntensity] : null;
 
   return (
     <Link
@@ -142,8 +149,8 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
       {/* Top accent stripe */}
       <div className="h-0.5 w-full shrink-0" style={{ backgroundColor: accent }} />
 
-      <div className="p-5 flex flex-col gap-4 flex-1">
-        {/* Header: avatar + names + badges */}
+      <div className="p-5 flex flex-col gap-3.5 flex-1">
+        {/* Header: avatar + issuer + project name */}
         <div className="flex items-start gap-3">
           <div
             className="w-10 h-10 rounded-sm flex items-center justify-center text-white text-xs font-bold shrink-0 mt-0.5"
@@ -159,10 +166,21 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
           </div>
         </div>
 
-        {/* Key fields grid */}
+        {/* Investment type label */}
+        <div className="flex items-center gap-2">
+          <span
+            className="text-[11px] font-medium px-2 py-0.5 rounded-sm border"
+            style={{ color: accent, borderColor: `${accent}35`, background: `${accent}10` }}
+          >
+            {opp.investmentTypeLabel}
+          </span>
+          <span className="text-[11px] text-white/30 border border-white/10 px-2 py-0.5 rounded-sm">
+            {opp.assetClass}
+          </span>
+        </div>
+
+        {/* Key fields grid: 4 fields, 2 columns */}
         <div className="grid grid-cols-2 gap-x-4 gap-y-3 bg-navy-900/60 rounded-sm p-3 border border-white/5">
-          <FieldRow label="Asset Class" value={opp.assetClass} />
-          <FieldRow label="Investment Type" value={opp.type === "fund" ? "Fund" : "Direct Equity"} />
           <FieldRow label="Issue Size" value={formatCurrency(opp.issueSize.amount, opp.issueSize.currency)} />
           <FieldRow
             label="Min. Investment"
@@ -185,8 +203,43 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
           <span>{opp.primaryPositivePursuit.label}</span>
         </div>
 
-        {/* Footer: status + sector + impact certified — always one line, no wrap */}
-        <div className="flex items-center gap-2 pt-1 border-t border-white/8 overflow-hidden">
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5">
+          {opp.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] px-2 py-0.5 rounded-sm border border-white/10 text-white/40"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Impact intensity */}
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] text-white/30 uppercase tracking-wider font-medium">Impact intensity</span>
+          {intensity ? (
+            <span className="flex items-center gap-1">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{
+                    backgroundColor: i < intensity.dots ? accent : "rgba(255,255,255,0.12)",
+                  }}
+                />
+              ))}
+              <span className="text-[10px] ml-1" style={{ color: accent }}>
+                {intensity.label}
+              </span>
+            </span>
+          ) : (
+            <span className="text-[10px] text-white/25 italic">TBC</span>
+          )}
+        </div>
+
+        {/* Footer: status + Impact Certified — always one line */}
+        <div className="flex items-center gap-2 pt-1 border-t border-white/8 overflow-hidden mt-auto">
           {opp.status === "live" ? (
             <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-emerald-900/40 text-emerald-400 border border-emerald-700/40 font-medium shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
@@ -197,9 +250,6 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
               Soon
             </span>
           )}
-          <span className="text-[11px] px-2 py-0.5 rounded-full border border-white/10 text-white/35 min-w-0 truncate">
-            {sectorLabels[opp.sector]}
-          </span>
           <span
             className="ml-auto text-[11px] px-2 py-0.5 rounded-full border font-medium shrink-0"
             style={{ color: accent, borderColor: `${accent}35`, background: `${accent}10` }}

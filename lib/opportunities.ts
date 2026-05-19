@@ -48,6 +48,9 @@ export type Opportunity = {
     accent: string;
     overlay: string;
   };
+  investmentTypeLabel: string;
+  tags: string[];
+  impactIntensity: "High" | "Moderate" | "Exploratory" | null;
   // Semantic keyword tags for conversational search
   searchKeywords?: string[];
 };
@@ -131,6 +134,9 @@ export const opportunities: Opportunity[] = [
       accent: "#4caf82",
       overlay: "rgba(26,58,42,0.82)",
     },
+    investmentTypeLabel: "Open-ended Fund",
+    tags: ["Nature-Based", "Environmental Flows", "Water"],
+    impactIntensity: "High",
     searchKeywords: [
       "water",
       "ecosystems",
@@ -220,6 +226,9 @@ export const opportunities: Opportunity[] = [
       accent: "#4c8af0",
       overlay: "rgba(26,38,64,0.85)",
     },
+    investmentTypeLabel: "Series B",
+    tags: ["Zero-Emission Transport", "Climate", "Infrastructure"],
+    impactIntensity: "High",
     searchKeywords: [
       "EV",
       "electric vehicles",
@@ -300,6 +309,9 @@ export const opportunities: Opportunity[] = [
       accent: "#4caf82",
       overlay: "rgba(26,58,42,0.82)",
     },
+    investmentTypeLabel: "Series A",
+    tags: ["Agritech", "Climate", "Agriculture"],
+    impactIntensity: "Moderate",
     searchKeywords: [
       "methane",
       "livestock",
@@ -385,6 +397,9 @@ export const opportunities: Opportunity[] = [
       accent: "#4c8af0",
       overlay: "rgba(26,38,64,0.85)",
     },
+    investmentTypeLabel: "Series B",
+    tags: ["Advanced Materials", "Clean Energy", "Climate"],
+    impactIntensity: "Moderate",
     searchKeywords: [
       "battery",
       "anode",
@@ -468,6 +483,9 @@ export const opportunities: Opportunity[] = [
       accent: "#d4648a",
       overlay: "rgba(42,21,32,0.85)",
     },
+    investmentTypeLabel: "Private Credit Fund",
+    tags: ["Social Housing", "Community", "Inclusion"],
+    impactIntensity: "High",
     searchKeywords: [
       "housing",
       "homelessness",

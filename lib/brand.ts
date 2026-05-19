@@ -2,11 +2,11 @@
 export const brand = {
   name: "ImpactX",
   fullName: "ImpactX Markets",
-  tagline: "Trusted infrastructure for impact capital",
+  tagline: "Trustworthy infrastructure for impact capital",
   subheadPlaceholder: "[Subhead TBC]",
   contactEmail: "hello@impactxmarkets.com", // Replace with confirmed address
   legalDisclaimer:
-    "ImpactX Markets does not hold an Australian Financial Services Licence (AFSL). Nothing on this site constitutes financial product advice, a recommendation, or an offer to acquire a financial product. Information is provided for general informational purposes only.",
+    "Nothing on this site constitutes financial product advice, a recommendation, or an offer to acquire a financial product. Information is provided for general informational purposes only.",
   confidentialBannerText: "Confidential — Invite Only",
   johnWestCounter: {
     start: 50,

@@ -4,36 +4,36 @@ import { JohnWestCounter } from "@/components/JohnWestCounter";
 import { ContactForm } from "@/components/ContactForm";
 import { brand } from "@/lib/brand";
 
-const fourCapitals = [
+const fiveCapitals = [
   {
     name: "Financial capital",
     icon: "◈",
     example: "Durable returns across market cycles and generations",
-    color: "#1a3a5c",
+    color: "#1e3a5f",
   },
   {
     name: "Human capital",
     icon: "◉",
-    example: "Health, knowledge, and wellbeing of family members",
-    color: "#1a4a38",
+    example: "Health, knowledge, and capability over time",
+    color: "#1a2d4a",
   },
   {
     name: "Social capital",
     icon: "◎",
     example: "Relationships, reputation, and community standing",
-    color: "#263859",
+    color: "#1e3050",
   },
   {
     name: "Intellectual capital",
     icon: "◇",
-    example: "Shared values, wisdom, and family narrative",
-    color: "#2a3060",
+    example: "Values, wisdom, and long-term purpose",
+    color: "#1a2848",
   },
   {
     name: "Spiritual capital",
     icon: "◯",
-    example: "Purpose, legacy, and meaning beyond wealth",
-    color: "#1e2a4a",
+    example: "Meaning, legacy, and a sense of wider purpose",
+    color: "#18243f",
   },
 ];
 
@@ -87,7 +87,7 @@ export default function HomePage() {
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-white leading-[1.06] tracking-tight mb-6">
-              Trusted Infrastructure for Impact Capital
+              Trustworthy Infrastructure for Impact Capital
             </h1>
             <p className="text-lg text-white/55 leading-relaxed mb-10 max-w-xl">
               ImpactX brings structure, comparability, and independent
@@ -113,13 +113,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Legal disclaimer strip */}
-      <div className="bg-navy-950 border-y border-white/5 px-6 py-3">
-        <p className="text-center text-xs text-white/25 max-w-4xl mx-auto leading-relaxed">
-          {brand.legalDisclaimer}
-        </p>
-      </div>
-
       {/* ── CURATION ── */}
       <section className="py-24 md:py-36 bg-navy-900">
         <div className="max-w-7xl mx-auto px-6">
@@ -137,9 +130,7 @@ export default function HomePage() {
                   Credible impact investing demands the same rigour applied to
                   financial analysis. ImpactX reviews each opportunity against a
                   defined standard before listing: a Theory of Change, specific
-                  outcome KPIs, and minimum assurance criteria. The result is a
-                  curated set of private-market opportunities where impact is
-                  measurable, comparable, and independently verified.
+                  outcome KPIs, and minimum assurance criteria.
                 </p>
               </div>
             </div>
@@ -151,27 +142,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FOUR CAPITALS ── */}
+      {/* ── FIVE CAPITALS ── */}
       <section className="py-24 bg-navy-950">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-xl mb-12">
             <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
-              The complete picture
+              A broader view of value
             </span>
             <h2 className="text-4xl font-display font-light text-white leading-tight mb-4">
               Return is one dimension.
             </h2>
             <p className="text-white/55 leading-relaxed">
-              The four-capitals framework, widely adopted by family offices
-              following Jay Hughes Jr., recognises that a family&apos;s wealth
-              extends beyond financial capital. Impact investing, structured with
-              rigour, can contribute positively across financial, human, social,
-              intellectual, and spiritual dimensions over time.
+              The five-capitals framework, associated with the work of Jay
+              Hughes Jr., offers a way to think about wealth beyond financial
+              capital alone. Across financial, human, social, intellectual, and
+              spiritual dimensions, impact investing may contribute positively
+              to long-term outcomes.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {fourCapitals.map((capital) => (
+            {fiveCapitals.map((capital) => (
               <div
                 key={capital.name}
                 className="rounded-sm p-5 border border-white/8 hover:border-white/15 transition-colors"
@@ -193,9 +184,8 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-5 text-xs text-white/30">
-            Framework: Jay E. Hughes Jr.,{" "}
-            <em>Family Wealth: Keeping It in the Family</em>. Spiritual capital
-            added by subsequent practitioners.
+            Reference: Jay E. Hughes Jr.,{" "}
+            <em>Family Wealth: Keeping It in the Family</em>.
           </p>
         </div>
       </section>
