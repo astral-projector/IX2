@@ -42,6 +42,7 @@ export function Nav({ variant = "public" }: NavProps) {
             height={36}
             className="rounded-sm"
             priority
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
           />
           <span className="text-white font-semibold tracking-tight text-sm">
             {brand.name}
