@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { EnquireModal } from "@/components/EnquireModal";
-import { type Opportunity, formatCurrency, sectorLabels } from "@/lib/opportunities";
+import { type Opportunity, formatCurrency, formatMinInvestment, sectorLabels } from "@/lib/opportunities";
 import { FileText, Folder, FolderOpen, Lock } from "lucide-react";
 
 interface OpportunityDetailProps {
@@ -93,7 +93,7 @@ export function OpportunityDetail({ opportunity: opp }: OpportunityDetailProps) 
     opp.targetNetReturns ? { label: "Target Net Returns", value: opp.targetNetReturns } : null,
     opp.expectedLiquidity ? { label: "Expected Liquidity", value: opp.expectedLiquidity } : null,
     opp.closeDate ? { label: "Close Date", value: new Date(opp.closeDate).toLocaleDateString("en-AU", { month: "short", year: "numeric" }) } : null,
-    opp.minimumInvestable ? { label: "Minimum", value: formatCurrency(opp.minimumInvestable.amount, opp.minimumInvestable.currency) } : null,
+    opp.minimumInvestable ? { label: "Minimum", value: formatMinInvestment(opp.minimumInvestable.amount, opp.minimumInvestable.currency) } : null,
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (

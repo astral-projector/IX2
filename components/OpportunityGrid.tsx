@@ -8,6 +8,7 @@ import {
   opportunities,
   type Opportunity,
   formatCurrency,
+  formatMinInvestment,
   sectorLabels,
 } from "@/lib/opportunities";
 import { positivePursuits, sdgs, matchTaxonomy, matchesActiveTaxonomy } from "@/lib/taxonomy";
@@ -167,7 +168,7 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
             label="Min. Investment"
             value={
               opp.minimumInvestable
-                ? formatCurrency(opp.minimumInvestable.amount, opp.minimumInvestable.currency)
+                ? formatMinInvestment(opp.minimumInvestable.amount, opp.minimumInvestable.currency)
                 : null
             }
           />

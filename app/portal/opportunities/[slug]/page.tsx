@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getOpportunity, opportunities } from "@/lib/opportunities";
 import { OpportunityDetail } from "@/components/OpportunityDetail";
+import { BackButton } from "@/components/BackButton";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -26,5 +27,12 @@ export default async function OpportunityPage({ params }: PageProps) {
   const { slug } = await params;
   const opp = getOpportunity(slug);
   if (!opp) notFound();
-  return <OpportunityDetail opportunity={opp} />;
+  return (
+    <>
+      <div className="bg-navy-900 border-b border-white/6 px-6 py-3">
+        <BackButton />
+      </div>
+      <OpportunityDetail opportunity={opp} />
+    </>
+  );
 }

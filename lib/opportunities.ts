@@ -295,10 +295,10 @@ export const opportunities: Opportunity[] = [
     assuranceProvider: null,
     avatarInitials: "N8",
     heroPalette: {
-      base: "#2a2010",
-      baseDark: "#1a1408",
-      accent: "#c8a450",
-      overlay: "rgba(42,32,16,0.85)",
+      base: "#1a3a2a",
+      baseDark: "#0f2218",
+      accent: "#4caf82",
+      overlay: "rgba(26,58,42,0.82)",
     },
     searchKeywords: [
       "methane",
@@ -380,10 +380,10 @@ export const opportunities: Opportunity[] = [
     assuranceProvider: null,
     avatarInitials: "SI",
     heroPalette: {
-      base: "#1a1a2e",
-      baseDark: "#0f0f1e",
-      accent: "#8b5cf6",
-      overlay: "rgba(26,26,46,0.87)",
+      base: "#1a2640",
+      baseDark: "#0f1828",
+      accent: "#4c8af0",
+      overlay: "rgba(26,38,64,0.85)",
     },
     searchKeywords: [
       "battery",
@@ -463,10 +463,10 @@ export const opportunities: Opportunity[] = [
     assuranceProvider: null,
     avatarInitials: "SV",
     heroPalette: {
-      base: "#2a1a30",
-      baseDark: "#1a0f20",
+      base: "#2a1520",
+      baseDark: "#1a0d15",
       accent: "#d4648a",
-      overlay: "rgba(42,26,48,0.85)",
+      overlay: "rgba(42,21,32,0.85)",
     },
     searchKeywords: [
       "housing",
@@ -494,6 +494,14 @@ export function formatCurrency(
   return `$${amount}m ${currency}`;
 }
 
+// For raw dollar amounts (minimumInvestable etc.) stored as actual numbers, not millions
+export function formatMinInvestment(
+  amount: number,
+  currency: "AUD" | "USD"
+): string {
+  return `${currency} ${amount.toLocaleString("en-AU")}`;
+}
+
 export const sectorLabels: Record<Opportunity["sector"], string> = {
   "nature-based": "Nature-Based",
   "social-housing": "Social Housing",
@@ -504,8 +512,24 @@ export const sectorLabels: Record<Opportunity["sector"], string> = {
 
 export const sectorColors: Record<Opportunity["sector"], string> = {
   "nature-based": "#1a3a2a",
-  "social-housing": "#2a1a30",
+  "social-housing": "#2a1520",
   "energy-transport": "#1a2640",
-  agritech: "#2a2010",
-  "advanced-materials": "#1a1a2e",
+  agritech: "#1a3a2a",
+  "advanced-materials": "#1a2640",
+};
+
+// Three-category palette: green (nature/agri), blue (energy/climate), red (social)
+export type CategoryPalette = {
+  base: string;
+  baseDark: string;
+  accent: string;
+  overlay: string;
+};
+
+export const categoryPalettes: Record<Opportunity["sector"], CategoryPalette> = {
+  "nature-based":      { base: "#1a3a2a", baseDark: "#0f2218", accent: "#4caf82", overlay: "rgba(26,58,42,0.82)" },
+  agritech:            { base: "#1a3a2a", baseDark: "#0f2218", accent: "#4caf82", overlay: "rgba(26,58,42,0.82)" },
+  "energy-transport":  { base: "#1a2640", baseDark: "#0f1828", accent: "#4c8af0", overlay: "rgba(26,38,64,0.85)" },
+  "advanced-materials":{ base: "#1a2640", baseDark: "#0f1828", accent: "#4c8af0", overlay: "rgba(26,38,64,0.85)" },
+  "social-housing":    { base: "#2a1520", baseDark: "#1a0d15", accent: "#d4648a", overlay: "rgba(42,21,32,0.85)" },
 };
