@@ -184,23 +184,23 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
           <span>{opp.primaryPositivePursuit.label}</span>
         </div>
 
-        {/* Footer: status + sector + impact certified */}
-        <div className="flex items-center gap-2 pt-1 border-t border-white/8 flex-wrap">
+        {/* Footer: status + sector + impact certified — always one line, no wrap */}
+        <div className="flex items-center gap-2 pt-1 border-t border-white/8 overflow-hidden">
           {opp.status === "live" ? (
-            <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-emerald-900/40 text-emerald-400 border border-emerald-700/40 font-medium">
+            <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-emerald-900/40 text-emerald-400 border border-emerald-700/40 font-medium shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               Live
             </span>
           ) : (
-            <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-900/30 text-amber-400 border border-amber-700/30 font-medium">
-              Coming soon
+            <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-900/30 text-amber-400 border border-amber-700/30 font-medium shrink-0">
+              Soon
             </span>
           )}
-          <span className="text-[11px] px-2 py-0.5 rounded-full border border-white/10 text-white/35">
+          <span className="text-[11px] px-2 py-0.5 rounded-full border border-white/10 text-white/35 min-w-0 truncate">
             {sectorLabels[opp.sector]}
           </span>
           <span
-            className="ml-auto text-[11px] px-2 py-0.5 rounded-full border font-medium"
+            className="ml-auto text-[11px] px-2 py-0.5 rounded-full border font-medium shrink-0"
             style={{ color: accent, borderColor: `${accent}35`, background: `${accent}10` }}
           >
             Impact Certified
@@ -245,26 +245,21 @@ function TaxonomyPanel({
               <button
                 key={pp.code}
                 onClick={() => onTogglePP(pp.code)}
-                title={pp.label}
                 className={[
-                  "inline-flex items-center gap-1 text-[10px] px-2 py-1 rounded-sm border transition-all",
+                  "inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded-sm border transition-all text-left",
                   isActive
                     ? "bg-brand-green/20 border-brand-green/50 text-brand-green font-semibold"
                     : isHighlighted
                     ? "bg-brand-green/8 border-brand-green/30 text-brand-green/70"
-                    : "border-white/10 text-white/35 hover:border-white/25 hover:text-white/60",
+                    : "border-white/10 text-white/40 hover:border-white/25 hover:text-white/65",
                 ].join(" ")}
               >
-                <span className="font-mono">{pp.code}</span>
+                <span className="font-mono text-[10px] opacity-80 shrink-0">{pp.code}</span>
+                <span className="text-[10px]">{pp.label}</span>
               </button>
             );
           })}
         </div>
-        {activePPs.length > 0 && (
-          <p className="text-[10px] text-brand-green/60 mt-1.5">
-            {activePPs.map((c) => positivePursuits.find((p) => p.code === c)?.label).filter(Boolean).join(", ")}
-          </p>
-        )}
       </div>
 
       {/* SDGs */}
@@ -280,26 +275,21 @@ function TaxonomyPanel({
               <button
                 key={sdg.number}
                 onClick={() => onToggleSDG(sdg.number)}
-                title={sdg.label}
                 className={[
-                  "inline-flex items-center justify-center w-8 h-8 text-xs rounded-sm border font-semibold transition-all",
+                  "inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded-sm border font-medium transition-all",
                   isActive
                     ? "bg-brand-green/20 border-brand-green/50 text-brand-green"
                     : isHighlighted
                     ? "bg-brand-green/8 border-brand-green/30 text-brand-green/60"
-                    : "border-white/10 text-white/35 hover:border-white/25 hover:text-white/60",
+                    : "border-white/10 text-white/40 hover:border-white/25 hover:text-white/65",
                 ].join(" ")}
               >
-                {sdg.number}
+                <span className="font-mono text-[10px] shrink-0">{sdg.number}</span>
+                <span className="text-[10px]">{sdg.shortLabel}</span>
               </button>
             );
           })}
         </div>
-        {activeSDGs.length > 0 && (
-          <p className="text-[10px] text-brand-green/60 mt-1.5">
-            {activeSDGs.map((n) => sdgs.find((s) => s.number === n)?.shortLabel).filter(Boolean).join(", ")}
-          </p>
-        )}
       </div>
     </div>
   );
@@ -505,26 +495,34 @@ export function OpportunityGrid() {
                 <X size={11} />
               </button>
             ))}
-            {activePPs.map((code) => (
-              <button
-                key={`pp-${code}`}
-                onClick={() => togglePP(code)}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-brand-green/15 text-brand-green border border-brand-green/30 text-xs rounded-full hover:bg-brand-green/25 transition-colors font-medium"
-              >
-                {code}
-                <X size={11} />
-              </button>
-            ))}
-            {activeSDGs.map((num) => (
-              <button
-                key={`sdg-${num}`}
-                onClick={() => toggleSDG(num)}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-brand-green/15 text-brand-green border border-brand-green/30 text-xs rounded-full hover:bg-brand-green/25 transition-colors font-medium"
-              >
-                SDG {num}
-                <X size={11} />
-              </button>
-            ))}
+            {activePPs.map((code) => {
+              const pp = positivePursuits.find((p) => p.code === code);
+              return (
+                <button
+                  key={`pp-${code}`}
+                  onClick={() => togglePP(code)}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-brand-green/15 text-brand-green border border-brand-green/30 text-xs rounded-full hover:bg-brand-green/25 transition-colors font-medium"
+                >
+                  <span className="font-mono text-[10px]">{code}</span>
+                  {pp && <span>{pp.label}</span>}
+                  <X size={11} />
+                </button>
+              );
+            })}
+            {activeSDGs.map((num) => {
+              const sdg = sdgs.find((s) => s.number === num);
+              return (
+                <button
+                  key={`sdg-${num}`}
+                  onClick={() => toggleSDG(num)}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-brand-green/15 text-brand-green border border-brand-green/30 text-xs rounded-full hover:bg-brand-green/25 transition-colors font-medium"
+                >
+                  <span className="font-mono text-[10px]">SDG {num}</span>
+                  {sdg && <span>{sdg.shortLabel}</span>}
+                  <X size={11} />
+                </button>
+              );
+            })}
             <button onClick={clearAll} className="text-xs text-white/30 hover:text-white/55 underline">
               Clear all
             </button>

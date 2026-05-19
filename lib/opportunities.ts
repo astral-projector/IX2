@@ -63,7 +63,7 @@ export const opportunities: Opportunity[] = [
     sector: "nature-based",
     geography: "Australia — Murray-Darling Basin",
     type: "fund",
-    assetClass: "Real Assets / Private Credit",
+    assetClass: "Fund",
     stage: "Open",
     issueSize: { amount: 50, currency: "AUD" },
     targetNetReturns: "7–9% p.a. (net)",
@@ -71,7 +71,7 @@ export const opportunities: Opportunity[] = [
     distributionFrequency: "Annual",
     expectedMaturity: "Open-ended",
     closeDate: "2025-09-30",
-    minimumInvestable: { amount: 250000, currency: "AUD" },
+    minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
       "The fund seeks to raise $50m AUD to acquire a diversified portfolio of water entitlements and farmland across the Murray-Darling Basin.",
     useOfProceeds:
@@ -160,7 +160,7 @@ export const opportunities: Opportunity[] = [
     distributionFrequency: null,
     expectedMaturity: "5–7 years",
     closeDate: "2025-12-31",
-    minimumInvestable: { amount: 500000, currency: "AUD" },
+    minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
       "NET is raising $35m AUD in Series B equity to fund construction of the Wilton freight hub and expand its fleet of battery-electric heavy vehicles.",
     useOfProceeds:
@@ -250,7 +250,7 @@ export const opportunities: Opportunity[] = [
     distributionFrequency: null,
     expectedMaturity: "5–8 years",
     closeDate: null,
-    minimumInvestable: null,
+    minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
       "Number8Bio is preparing a Series A raise to fund clinical trials, regulatory approval processes, and initial commercial-scale production.",
     useOfProceeds:
@@ -331,7 +331,7 @@ export const opportunities: Opportunity[] = [
     distributionFrequency: null,
     expectedMaturity: "5–7 years",
     closeDate: null,
-    minimumInvestable: null,
+    minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
       "Sicona is preparing a Series B raise to scale pilot-plant production and enter supply agreements with battery cell manufacturers.",
     useOfProceeds:
@@ -414,7 +414,7 @@ export const opportunities: Opportunity[] = [
     distributionFrequency: "Semi-annual",
     expectedMaturity: "7–10 years",
     closeDate: null,
-    minimumInvestable: null,
+    minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
       "SVA is preparing a dedicated fund targeting affordable housing for older women at risk of homelessness, with a target raise of $40m AUD.",
     useOfProceeds:
