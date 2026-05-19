@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { brand } from "@/lib/brand";
 
 interface ContactFormProps {
   className?: string;
 }
 
 export function ContactForm({ className }: ContactFormProps) {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -22,26 +21,14 @@ export function ContactForm({ className }: ContactFormProps) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, type: "request-access" }),
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", organisation: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+    // Dummy — simulate a short delay then show confirmation
+    setTimeout(() => {
+      setStatus("success");
+      setForm({ name: "", email: "", organisation: "", message: "" });
+    }, 800);
   };
 
   if (status === "success") {
@@ -122,15 +109,6 @@ export function ContactForm({ className }: ContactFormProps) {
           placeholder="Tell us a little about your interest in impact investing…"
         />
       </div>
-      {status === "error" && (
-        <p className="text-sm text-red-600">
-          Something went wrong. Please try again or email us directly at{" "}
-          <a href={`mailto:${brand.contactEmail}`} className="underline">
-            {brand.contactEmail}
-          </a>
-          .
-        </p>
-      )}
       <button
         type="submit"
         disabled={status === "submitting"}

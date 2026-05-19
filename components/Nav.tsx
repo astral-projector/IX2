@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { brand } from "@/lib/brand";
 
 interface NavProps {
@@ -33,13 +33,16 @@ export function Nav({ variant = "public" }: NavProps) {
         {/* Logo */}
         <Link
           href={variant === "portal" ? "/portal" : "/"}
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2.5"
         >
-          <div className="w-7 h-7 rounded-sm bg-brand-green flex items-center justify-center">
-            <span className="text-white font-display font-semibold text-sm leading-none">
-              IX
-            </span>
-          </div>
+          <Image
+            src="/logo.png"
+            alt={brand.fullName}
+            width={36}
+            height={36}
+            className="rounded-sm"
+            priority
+          />
           <span className="text-white font-semibold tracking-tight text-sm">
             {brand.name}
             <span className="text-white/40 font-normal ml-1 text-xs">

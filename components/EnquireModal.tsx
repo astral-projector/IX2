@@ -20,11 +20,8 @@ export function EnquireModal({
   open,
   onOpenChange,
   opportunityName,
-  opportunitySlug,
 }: EnquireModalProps) {
-  const [status, setStatus] = useState<
-    "idle" | "submitting" | "success" | "error"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -34,41 +31,31 @@ export function EnquireModal({
   });
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
+    // Dummy — simulate network delay then show confirmation
+    setTimeout(() => setStatus("success"), 800);
+  };
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          type: "enquire",
-          opportunity: opportunityName,
-          slug: opportunitySlug,
-        }),
-      });
-
-      if (res.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
+  // Reset state when dialog closes so it's fresh on re-open
+  const handleOpenChange = (next: boolean) => {
+    if (!next) {
+      setTimeout(() => {
+        setStatus("idle");
+        setForm({ name: "", email: "", organisation: "", message: "", interestLevel: "Exploring" });
+      }, 200);
     }
+    onOpenChange(next);
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle>Enquire about this opportunity</DialogTitle>
@@ -99,10 +86,7 @@ export function EnquireModal({
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
             <div className="grid grid-cols-2 gap-3">
               <div className="flex flex-col gap-1.5">
-                <label
-                  className="text-xs font-medium text-navy-700"
-                  htmlFor="enq-name"
-                >
+                <label className="text-xs font-medium text-navy-700" htmlFor="enq-name">
                   Full name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -117,10 +101,7 @@ export function EnquireModal({
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <label
-                  className="text-xs font-medium text-navy-700"
-                  htmlFor="enq-email"
-                >
+                <label className="text-xs font-medium text-navy-700" htmlFor="enq-email">
                   Email <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -136,10 +117,7 @@ export function EnquireModal({
               </div>
             </div>
             <div className="flex flex-col gap-1.5">
-              <label
-                className="text-xs font-medium text-navy-700"
-                htmlFor="enq-org"
-              >
+              <label className="text-xs font-medium text-navy-700" htmlFor="enq-org">
                 Organisation
               </label>
               <input
@@ -153,10 +131,7 @@ export function EnquireModal({
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <label
-                className="text-xs font-medium text-navy-700"
-                htmlFor="enq-interest"
-              >
+              <label className="text-xs font-medium text-navy-700" htmlFor="enq-interest">
                 Interest level
               </label>
               <select
@@ -172,10 +147,7 @@ export function EnquireModal({
               </select>
             </div>
             <div className="flex flex-col gap-1.5">
-              <label
-                className="text-xs font-medium text-navy-700"
-                htmlFor="enq-message"
-              >
+              <label className="text-xs font-medium text-navy-700" htmlFor="enq-message">
                 Message
               </label>
               <textarea
@@ -185,14 +157,9 @@ export function EnquireModal({
                 value={form.message}
                 onChange={handleChange}
                 className="px-3 py-2 border border-navy-200 rounded-sm text-sm text-navy-900 placeholder-navy-400 focus:outline-none focus:ring-2 focus:ring-brand-green/40 focus:border-brand-green transition-colors resize-none"
-                placeholder="Any questions or context you&apos;d like to share…"
+                placeholder="Any questions or context you'd like to share…"
               />
             </div>
-            {status === "error" && (
-              <p className="text-xs text-red-600">
-                Something went wrong. Please try again.
-              </p>
-            )}
             <button
               type="submit"
               disabled={status === "submitting"}
@@ -201,8 +168,7 @@ export function EnquireModal({
               {status === "submitting" ? "Sending…" : "Submit enquiry"}
             </button>
             <p className="text-xs text-navy-400 leading-relaxed">
-              This does not constitute an expression of interest in any
-              financial product or an offer to invest.
+              This does not constitute an expression of interest in any financial product or an offer to invest.
             </p>
           </form>
         )}

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Nav } from "@/components/Nav";
 import { JohnWestCounter } from "@/components/JohnWestCounter";
 import { ContactForm } from "@/components/ContactForm";
@@ -351,62 +352,26 @@ export default function HomePage() {
       {/* ── 6. ABOUT ── */}
       <section id="about" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
-            <div>
-              <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
-                About
-              </span>
-              <h2 className="text-4xl font-display font-light text-navy-900 leading-tight mb-6">
-                Built on a research foundation.
-              </h2>
-              <div className="space-y-4 text-navy-600 leading-relaxed">
-                <p>
-                  ImpactX Markets was developed in partnership with the Digital
-                  Finance Cooperative Research Centre (DFCRC) — Australia&apos;s
-                  federally funded research consortium advancing innovation in
-                  digital finance and capital markets.
-                </p>
-                <p>
-                  The platform&apos;s Positive Pursuits taxonomy, Theory of
-                  Change methodology, and minimum assurance standards were
-                  developed through that research collaboration, grounding the
-                  platform in rigour rather than marketing.
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="border border-navy-100 rounded-sm p-6">
-                <div className="text-xs uppercase tracking-widest text-navy-400 font-medium mb-4">
-                  Built in partnership with
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="h-10 px-4 bg-navy-100 rounded-sm flex items-center text-sm font-semibold text-navy-700">
-                    DFCRC
-                  </div>
-                  <span className="text-xs text-navy-400">
-                    Digital Finance Cooperative Research Centre
-                  </span>
-                </div>
-              </div>
-
-              <div className="border border-navy-100 rounded-sm p-6">
-                <div className="text-xs uppercase tracking-widest text-navy-400 font-medium mb-4">
-                  Team
-                </div>
-                <div className="grid grid-cols-3 gap-3">
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className="flex flex-col items-center gap-2">
-                      <div className="w-12 h-12 rounded-full bg-navy-100 border border-navy-200" />
-                      <div className="h-2 w-16 bg-navy-100 rounded" />
-                      <div className="h-1.5 w-12 bg-navy-50 rounded" />
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-navy-400 mt-4 text-center">
-                  Team profiles coming soon.
-                </p>
-              </div>
+          <div className="max-w-2xl mb-20">
+            <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
+              About
+            </span>
+            <h2 className="text-4xl font-display font-light text-navy-900 leading-tight mb-6">
+              Built on a research foundation.
+            </h2>
+            <div className="space-y-4 text-navy-600 leading-relaxed">
+              <p>
+                ImpactX Markets was developed in partnership with the Digital
+                Finance Cooperative Research Centre (DFCRC) — Australia&apos;s
+                federally funded research consortium advancing innovation in
+                digital finance and capital markets.
+              </p>
+              <p>
+                The platform&apos;s Positive Pursuits taxonomy, Theory of
+                Change methodology, and minimum assurance standards were
+                developed through that research collaboration, grounding the
+                platform in rigour rather than marketing.
+              </p>
             </div>
           </div>
         </div>
@@ -449,12 +414,8 @@ export default function HomePage() {
       <footer className="bg-navy-900 border-t border-white/10 py-10 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-6 h-6 rounded-sm bg-brand-green flex items-center justify-center">
-                <span className="text-white font-display font-semibold text-xs leading-none">
-                  IX
-                </span>
-              </div>
+            <div className="flex items-center gap-2.5 mb-2">
+              <Image src="/logo.png" alt="ImpactX Markets" width={28} height={28} className="rounded-sm" />
               <span className="text-white font-semibold text-sm">
                 ImpactX Markets
               </span>
