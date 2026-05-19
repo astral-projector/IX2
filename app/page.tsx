@@ -129,8 +129,8 @@ export default function HomePage() {
                 A higher standard
               </span>
               <h2 className="text-4xl md:text-5xl font-display font-light text-white leading-tight mb-6">
-                ImpactX focuses on opportunities where credible impact and
-                commercial performance can reinforce each other.
+                Surfacing investment opportunities where impact and returns
+                compound together.
               </h2>
               <div className="text-white/60 leading-relaxed">
                 <p>
