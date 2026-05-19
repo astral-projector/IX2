@@ -12,10 +12,13 @@ export type Opportunity = {
     | "advanced-materials";
   geography: string;
   type: "fund" | "direct-equity";
+  assetClass: string;
   stage: string;
   issueSize: { amount: number; currency: "AUD" | "USD" };
   targetNetReturns: string | null;
   expectedLiquidity: string | null;
+  distributionFrequency: string | null;
+  expectedMaturity: string | null;
   closeDate: string | null;
   minimumInvestable: { amount: number; currency: "AUD" | "USD" } | null;
   capitalRequirement: string;
@@ -60,10 +63,13 @@ export const opportunities: Opportunity[] = [
     sector: "nature-based",
     geography: "Australia — Murray-Darling Basin",
     type: "fund",
+    assetClass: "Real Assets / Private Credit",
     stage: "Open",
     issueSize: { amount: 50, currency: "AUD" },
     targetNetReturns: "7–9% p.a. (net)",
     expectedLiquidity: "Annual redemption window",
+    distributionFrequency: "Annual",
+    expectedMaturity: "Open-ended",
     closeDate: "2025-09-30",
     minimumInvestable: { amount: 250000, currency: "AUD" },
     capitalRequirement:
@@ -146,10 +152,13 @@ export const opportunities: Opportunity[] = [
     sector: "energy-transport",
     geography: "Australia — Wilton, NSW",
     type: "direct-equity",
+    assetClass: "Private Equity",
     stage: "Series B",
     issueSize: { amount: 35, currency: "AUD" },
     targetNetReturns: null,
-    expectedLiquidity: "Strategic exit or IPO (5–7 year horizon)",
+    expectedLiquidity: "Strategic exit or IPO",
+    distributionFrequency: null,
+    expectedMaturity: "5–7 years",
     closeDate: "2025-12-31",
     minimumInvestable: { amount: 500000, currency: "AUD" },
     capitalRequirement:
@@ -233,10 +242,13 @@ export const opportunities: Opportunity[] = [
     sector: "agritech",
     geography: "Australia / New Zealand",
     type: "direct-equity",
+    assetClass: "Private Equity",
     stage: "Series A",
     issueSize: { amount: 12, currency: "AUD" },
     targetNetReturns: null,
     expectedLiquidity: null,
+    distributionFrequency: null,
+    expectedMaturity: "5–8 years",
     closeDate: null,
     minimumInvestable: null,
     capitalRequirement:
@@ -311,10 +323,13 @@ export const opportunities: Opportunity[] = [
     sector: "advanced-materials",
     geography: "Australia (Sydney / Wollongong)",
     type: "direct-equity",
+    assetClass: "Private Equity",
     stage: "Series B",
     issueSize: { amount: 30, currency: "AUD" },
     targetNetReturns: null,
     expectedLiquidity: null,
+    distributionFrequency: null,
+    expectedMaturity: "5–7 years",
     closeDate: null,
     minimumInvestable: null,
     capitalRequirement:
@@ -391,10 +406,13 @@ export const opportunities: Opportunity[] = [
     sector: "social-housing",
     geography: "Australia (metro + peri-urban)",
     type: "fund",
+    assetClass: "Private Credit / Impact",
     stage: "Pre-launch",
     issueSize: { amount: 40, currency: "AUD" },
     targetNetReturns: null,
     expectedLiquidity: null,
+    distributionFrequency: "Semi-annual",
+    expectedMaturity: "7–10 years",
     closeDate: null,
     minimumInvestable: null,
     capitalRequirement:
