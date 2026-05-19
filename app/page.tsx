@@ -40,19 +40,19 @@ const fourCapitals = [
 const valueProps = [
   {
     heading: "Clarity at origination",
-    body: "Every issuer commits to a specific Theory of Change, defined outcome metrics, and a reporting cadence before listing. Investors see the impact thesis in structural terms — not just narrative.",
+    body: "Every issuer commits to a defined Theory of Change, specific outcome metrics, and a reporting cadence before listing. Investors see the impact thesis in structural terms, not just narrative.",
   },
   {
     heading: "Verification over time",
-    body: "Impact KPIs are independently assured by third parties on a cadence agreed in investor documents. The assurance framework is set at raise — not retrofitted after the fact.",
+    body: "Impact KPIs are independently assured by third parties on a cadence agreed in investor documents. The assurance framework is set at raise, not retrofitted after the fact.",
   },
   {
     heading: "Comparable across asset classes",
-    body: "A common Positive Pursuits taxonomy makes it possible to compare private equity, credit, real assets, and funds on impact terms — not just risk and return.",
+    body: "A common Positive Pursuits taxonomy makes it possible to compare private equity, credit, real assets, and funds on impact terms alongside risk and return.",
   },
   {
     heading: "Lower friction for issuers",
-    body: "ImpactX is designed to make structuring and surfacing an impact thesis practical — without requiring a large ESG team, a complex reporting infrastructure, or significant additional cost.",
+    body: "ImpactX is designed to make structuring an impact thesis practical, without requiring a large dedicated team or significant additional reporting infrastructure.",
   },
 ];
 
@@ -87,12 +87,12 @@ export default function HomePage() {
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-white leading-[1.06] tracking-tight mb-6">
-              Impact and returns don&apos;t sit on opposite sides of the ledger.
+              Trusted Infrastructure for Impact Capital
             </h1>
             <p className="text-lg text-white/55 leading-relaxed mb-10 max-w-xl">
-              ImpactX brings decision-grade impact information to private market
-              investors — so you can evaluate, compare, and act with confidence
-              across private equity, credit, real assets, and funds.
+              ImpactX brings structure, comparability, and independent
+              verification to private-market impact opportunities across private
+              equity, credit, real assets, and funds.
             </p>
             <a
               href="#contact"
@@ -135,29 +135,16 @@ export default function HomePage() {
                   That&apos;s by design.
                 </em>
               </h2>
-              <div className="space-y-4 text-white/60 leading-relaxed">
+              <div className="text-white/60 leading-relaxed">
                 <p>
-                  <strong className="text-white/85 font-medium">
-                    The Australian impact investment market is growing
-                  </strong>{" "}
-                  — but the quality of impact claims is not keeping pace. Many
-                  opportunities carry strong sustainability language and little
-                  structural accountability. For investors who need to understand
-                  where real impact is occurring, this creates a credibility
-                  problem.
-                </p>
-                <p>
-                  ImpactX reviews private market opportunities against a
-                  consistent impact standard before they are presented. That
-                  review includes a defined Theory of Change, specific outcome
-                  KPIs, a Break-Even analysis, and minimum assurance criteria —
-                  not as marketing overlays, but as conditions of listing.
-                </p>
-                <p>
-                  The result is a smaller set of opportunities where impact
-                  claims can be evaluated rather than simply trusted. Comparable,
-                  credible, and verifiable — across private equity, credit, real
-                  assets, and funds.
+                  The impact investment market is expanding, but consistent,
+                  decision-grade information remains scarce. Most opportunities
+                  carry credible-sounding sustainability language with little
+                  structural accountability. ImpactX reviews private-market
+                  opportunities against a defined standard before listing: a
+                  Theory of Change, specific outcome KPIs, and minimum assurance
+                  criteria as conditions of entry. The result is a smaller,
+                  comparable, and independently verifiable set.
                 </p>
               </div>
             </div>
@@ -180,8 +167,8 @@ export default function HomePage() {
               Return is one dimension.
             </h2>
             <p className="text-white/55 leading-relaxed">
-              The four-capitals framework — widely adopted by family offices
-              following Jay Hughes Jr. — recognises that a family&apos;s wealth
+              The four-capitals framework, widely adopted by family offices
+              following Jay Hughes Jr., recognises that a family&apos;s wealth
               extends beyond financial capital. Impact investing, structured with
               rigour, can contribute positively across financial, human, social,
               intellectual, and spiritual dimensions over time.
@@ -262,15 +249,15 @@ export default function HomePage() {
             <div className="space-y-4 text-white/60 leading-relaxed">
               <p>
                 ImpactX Markets was developed in partnership with the Digital
-                Finance Cooperative Research Centre (DFCRC) — Australia&apos;s
-                federally funded research consortium advancing digital finance
-                and capital markets innovation.
+                Finance Cooperative Research Centre (DFCRC), an independent
+                research consortium advancing digital finance and capital markets
+                innovation.
               </p>
               <p>
-                The platform&apos;s impact assessment framework — including the
+                The platform&apos;s impact assessment framework, including the
                 Positive Pursuits taxonomy, Theory of Change methodology, and
-                minimum assurance standards — was developed through that
-                research partnership, grounding ImpactX in evidence rather than
+                minimum assurance standards, was developed through that research
+                partnership, grounding ImpactX in evidence rather than
                 convention.
               </p>
             </div>
