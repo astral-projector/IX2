@@ -8,114 +8,95 @@ const fourCapitals = [
   {
     name: "Financial capital",
     icon: "◈",
-    example: "Returns that endure across generations",
-    color: "#1a2640",
+    example: "Durable returns across market cycles and generations",
+    color: "#1a3a5c",
   },
   {
     name: "Human capital",
     icon: "◉",
-    example: "Health, wellbeing, and knowledge of family members",
-    color: "#2d7a4f",
+    example: "Health, knowledge, and wellbeing of family members",
+    color: "#1a4a38",
   },
   {
     name: "Social capital",
     icon: "◎",
-    example: "Relationships, community, and governance",
-    color: "#374d76",
+    example: "Relationships, reputation, and community standing",
+    color: "#263859",
   },
   {
     name: "Intellectual capital",
     icon: "◇",
-    example: "Wisdom, stories, and shared values",
-    color: "#4a618f",
+    example: "Shared values, wisdom, and family narrative",
+    color: "#2a3060",
   },
   {
     name: "Spiritual capital",
     icon: "◯",
     example: "Purpose, legacy, and meaning beyond wealth",
-    color: "#263859",
+    color: "#1e2a4a",
   },
 ];
 
 const valueProps = [
   {
     heading: "Clarity at origination",
-    body: "Theory of Change commitments and KPIs are embedded in capital documents before a dollar moves — not added after.",
+    body: "Every issuer commits to a specific Theory of Change, defined outcome metrics, and a reporting cadence before listing. Investors see the impact thesis in structural terms — not just narrative.",
   },
   {
     heading: "Verification over time",
-    body: "Independent third-party assurance of impact KPIs is agreed at the point of raise and reported at each cadence.",
+    body: "Impact KPIs are independently assured by third parties on a cadence agreed in investor documents. The assurance framework is set at raise — not retrofitted after the fact.",
   },
   {
-    heading: "Comparability across opportunities",
-    body: "Every opportunity on the platform uses the same Positive Pursuits taxonomy, making like-for-like assessment possible.",
+    heading: "Comparable across asset classes",
+    body: "A common Positive Pursuits taxonomy makes it possible to compare private equity, credit, real assets, and funds on impact terms — not just risk and return.",
   },
   {
-    heading: "Access without friction",
-    body: "Introductions to impact-certified issuers, structured for family-office engagement — no intermediaries, no noise.",
+    heading: "Lower friction for issuers",
+    body: "ImpactX is designed to make structuring and surfacing an impact thesis practical — without requiring a large ESG team, a complex reporting infrastructure, or significant additional cost.",
   },
 ];
-
-const howItWorksSteps = [
-  {
-    number: "01",
-    title: "Choose a Positive Pursuit",
-    body: "Issuers select at least one Positive Pursuit from 26 impact categories — for example, PP07 (greenhouse gases removed) or PP16 (people are healthy and safe from harm). The Positive Pursuits framework provides a consistent taxonomy across all opportunities on the platform.",
-  },
-  {
-    number: "02",
-    title: "Commit to a specific metric, KPI and cadence",
-    body: "A Theory of Change exercise during onboarding assigns the issuer's chosen Positive Pursuit to a measurable Outcome — for example, 1 MtCO₂e sequestered per annum. The KPI, unit, and reporting cadence are agreed before listing.",
-  },
-  {
-    number: "03",
-    title: "Agree to minimum assurance criteria",
-    body: "Issuers commit in Investor Agreements to how the KPI will be measured and assured by an independent third party, plus regular reporting of Positive Pursuits and Break-Even attestations to ImpactX.",
-  },
-];
-
-const workedExample = {
-  input:
-    "Capital raised acquires water entitlements and agricultural land in the Murray-Darling Basin.",
-  output:
-    "Environmental water allocations donated to the Murray-Darling Basin Authority. Agricultural operations sustain ongoing entitlement donations.",
-  outcome:
-    "Verified increase in environmental water flows: 2,000 ML per annum donated to environmental purposes.",
-  impact:
-    "Restoration of ecological function in degraded river reaches — supporting native fish populations, waterbird habitats, and floodplain vegetation.",
-};
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-navy-900">
       <Nav variant="public" />
 
-      {/* ── 1. HERO ── */}
-      <section className="relative bg-navy-900 overflow-hidden">
+      {/* ── HERO ── */}
+      <section className="relative bg-navy-950 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at 80% 0%, rgba(45,122,79,0.15) 0%, transparent 60%)",
+              "radial-gradient(ellipse at 75% 0%, rgba(0,232,144,0.07) 0%, transparent 55%)",
           }}
         />
-        <div className="relative max-w-7xl mx-auto px-6 py-32 md:py-44">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full border border-brand-green/30 bg-brand-green/10">
+        <div
+          className="absolute bottom-0 right-0 w-1/2 h-full opacity-[0.025] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto px-6 py-32 md:py-48">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full border border-brand-green/25 bg-brand-green/8">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-green" />
               <span className="text-xs text-brand-green font-medium uppercase tracking-wider">
                 Private markets · Impact certified
               </span>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-white leading-tight tracking-tight mb-6">
-              {brand.tagline}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-white leading-[1.06] tracking-tight mb-6">
+              Impact and returns don&apos;t sit on opposite sides of the ledger.
             </h1>
-            <p className="text-lg text-white/60 leading-relaxed mb-10 max-w-lg">
-              {brand.subheadPlaceholder}
+            <p className="text-lg text-white/55 leading-relaxed mb-10 max-w-xl">
+              ImpactX brings decision-grade impact information to private market
+              investors — so you can evaluate, compare, and act with confidence
+              across private equity, credit, real assets, and funds.
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 h-12 px-8 bg-brand-green text-white rounded-sm text-sm font-medium hover:bg-brand-green-light transition-colors"
+              className="inline-flex items-center gap-2 h-12 px-8 bg-brand-green text-navy-950 rounded-sm text-sm font-semibold hover:bg-brand-green-light transition-colors"
             >
               Request access
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -130,61 +111,53 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-        <div
-          className="absolute bottom-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-        />
       </section>
 
       {/* Legal disclaimer strip */}
-      <div className="bg-navy-950 px-6 py-3">
-        <p className="text-center text-xs text-white/30 max-w-4xl mx-auto leading-relaxed">
+      <div className="bg-navy-950 border-y border-white/5 px-6 py-3">
+        <p className="text-center text-xs text-white/25 max-w-4xl mx-auto leading-relaxed">
           {brand.legalDisclaimer}
         </p>
       </div>
 
-      {/* ── 2. THE TRUST GAP ── */}
-      <section className="py-24 md:py-36 bg-white">
+      {/* ── CURATION ── */}
+      <section className="py-24 md:py-36 bg-navy-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
-                The curation challenge
+                Rigorous curation
               </span>
-              <h2 className="text-4xl md:text-5xl font-display font-light text-navy-900 leading-tight mb-6">
-                Most deals don&apos;t make it through.
+              <h2 className="text-4xl md:text-5xl font-display font-light text-white leading-tight mb-6">
+                Most opportunities don&apos;t meet the standard.
                 <br />
-                <em className="not-italic text-navy-400">
-                  That&apos;s the point.
+                <em className="not-italic text-white/35">
+                  That&apos;s by design.
                 </em>
               </h2>
-              <div className="space-y-4 text-navy-600 leading-relaxed">
+              <div className="space-y-4 text-white/60 leading-relaxed">
                 <p>
-                  <strong className="text-navy-800 font-medium">
-                    Australian families are increasingly seeking impact
-                    investments
+                  <strong className="text-white/85 font-medium">
+                    The Australian impact investment market is growing
                   </strong>{" "}
-                  — but what they&apos;re finding is a market where claims
-                  outpace evidence. Many families tell us the hardest part
-                  isn&apos;t wanting to invest for impact; it&apos;s knowing
-                  which opportunities are real.
+                  — but the quality of impact claims is not keeping pace. Many
+                  opportunities carry strong sustainability language and little
+                  structural accountability. For investors who need to understand
+                  where real impact is occurring, this creates a credibility
+                  problem.
                 </p>
                 <p>
-                  Australia&apos;s responsible investment market is sized at
-                  over $100 billion — but the overwhelming majority is screen
-                  funds, not structured impact. The difference matters: a screen
-                  excludes harm; impact investing verifies that something
-                  measurably positive is happening.
+                  ImpactX reviews private market opportunities against a
+                  consistent impact standard before they are presented. That
+                  review includes a defined Theory of Change, specific outcome
+                  KPIs, a Break-Even analysis, and minimum assurance criteria —
+                  not as marketing overlays, but as conditions of listing.
                 </p>
                 <p>
-                  What we&apos;re hearing from families is consistent: they want
-                  impact they can point to, structured in a way they can defend
-                  to their advisors and their children. That requires
-                  infrastructure, not aspiration.
+                  The result is a smaller set of opportunities where impact
+                  claims can be evaluated rather than simply trusted. Comparable,
+                  credible, and verifiable — across private equity, credit, real
+                  assets, and funds.
                 </p>
               </div>
             </div>
@@ -196,77 +169,78 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 3. FOUR CAPITALS ── */}
-      <section className="py-24 bg-navy-50">
+      {/* ── FOUR CAPITALS ── */}
+      <section className="py-24 bg-navy-950">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-xl mb-12">
             <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
-              How families think about capital
+              The complete picture
             </span>
-            <h2 className="text-4xl font-display font-light text-navy-900 leading-tight mb-4">
-              Wealth is not one thing.
+            <h2 className="text-4xl font-display font-light text-white leading-tight mb-4">
+              Return is one dimension.
             </h2>
-            <p className="text-navy-600 leading-relaxed">
-              Jay Hughes Jr.&apos;s four-capitals framework — extended by many
-              family offices to include a fifth — recognises that a
-              family&apos;s full wealth spans dimensions that financial returns
-              alone cannot capture. Impact investing, done rigorously, can
-              contribute across all five.
+            <p className="text-white/55 leading-relaxed">
+              The four-capitals framework — widely adopted by family offices
+              following Jay Hughes Jr. — recognises that a family&apos;s wealth
+              extends beyond financial capital. Impact investing, structured with
+              rigour, can contribute positively across financial, human, social,
+              intellectual, and spiritual dimensions over time.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {fourCapitals.map((capital) => (
               <div
                 key={capital.name}
-                className="bg-white rounded-sm p-5 border border-navy-100 hover:border-navy-200 transition-colors"
+                className="rounded-sm p-5 border border-white/8 hover:border-white/15 transition-colors"
+                style={{ backgroundColor: capital.color + "60" }}
               >
                 <div
-                  className="w-8 h-8 rounded-sm flex items-center justify-center mb-3 text-white font-display text-lg"
-                  style={{ backgroundColor: capital.color }}
+                  className="w-8 h-8 rounded-sm flex items-center justify-center mb-3 font-display text-lg border border-white/10"
+                  style={{ backgroundColor: capital.color, color: "#e8edf5" }}
                 >
                   {capital.icon}
                 </div>
-                <h3 className="font-semibold text-navy-900 text-sm mb-1.5 leading-snug">
+                <h3 className="font-semibold text-white text-sm mb-1.5 leading-snug">
                   {capital.name}
                 </h3>
-                <p className="text-xs text-navy-500 leading-relaxed">
+                <p className="text-xs text-white/50 leading-relaxed">
                   {capital.example}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-6 text-xs text-navy-400">
-            Framework adapted from Jay E. Hughes Jr.,{" "}
+          <p className="mt-5 text-xs text-white/30">
+            Framework: Jay E. Hughes Jr.,{" "}
             <em>Family Wealth: Keeping It in the Family</em>. Spiritual capital
             added by subsequent practitioners.
           </p>
         </div>
       </section>
 
-      {/* ── 4. WHAT WE DO ── */}
-      <section className="py-24 bg-white">
+      {/* ── WHAT WE DO ── */}
+      <section className="py-24 bg-navy-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-xl mb-12">
             <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
-              What we do
+              What we offer
             </span>
-            <h2 className="text-4xl font-display font-light text-navy-900 leading-tight">
-              Infrastructure for the whole lifecycle.
+            <h2 className="text-4xl font-display font-light text-white leading-tight">
+              From impact claims to impact confidence.
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-navy-100 border border-navy-100 rounded-sm overflow-hidden">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/8 border border-white/8 rounded-sm overflow-hidden">
             {valueProps.map((vp, i) => (
               <div
                 key={i}
-                className="bg-white p-8 hover:bg-navy-50 transition-colors"
+                className="bg-navy-900 p-8 hover:bg-navy-800 transition-colors"
               >
                 <div className="w-6 h-0.5 bg-brand-green mb-5" />
-                <h3 className="font-semibold text-navy-900 mb-3 leading-snug">
+                <h3 className="font-semibold text-white mb-3 leading-snug">
                   {vp.heading}
                 </h3>
-                <p className="text-sm text-navy-500 leading-relaxed">
+                <p className="text-sm text-white/55 leading-relaxed">
                   {vp.body}
                 </p>
               </div>
@@ -275,112 +249,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 5. HOW IT WORKS ── */}
-      <section id="how-it-works" className="py-24 bg-navy-900">
+      {/* ── ABOUT ── */}
+      <section id="about" className="py-24 bg-navy-950">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-xl mb-14">
-            <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
-              How it works
-            </span>
-            <h2 className="text-4xl font-display font-light text-white leading-tight mb-4">
-              Three steps to impact integrity.
-            </h2>
-            <p className="text-white/50 text-sm leading-relaxed">
-              Every opportunity listed on ImpactX Markets completes the same
-              structured process before it reaches investors.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-14">
-            {howItWorksSteps.map((step) => (
-              <div
-                key={step.number}
-                className="bg-white/5 border border-white/10 rounded-sm p-7 hover:bg-white/8 transition-colors"
-              >
-                <div className="text-5xl font-display font-light text-white/15 mb-4 leading-none">
-                  {step.number}
-                </div>
-                <h3 className="font-semibold text-white mb-3 leading-snug">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-white/55 leading-relaxed">
-                  {step.body}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-xs text-white/35 mb-14 max-w-lg">
-            A Break-Even analysis is completed during onboarding to ensure the
-            issuer is not negating their Positive Pursuits elsewhere in their
-            operations.
-          </p>
-
-          {/* Worked example */}
-          <div className="border border-brand-green/20 rounded-sm overflow-hidden">
-            <div className="bg-brand-green/10 border-b border-brand-green/20 px-7 py-4 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-sm bg-brand-green/20 flex items-center justify-center text-xs font-bold text-brand-green">
-                KR
-              </div>
-              <div>
-                <div className="text-xs text-brand-green font-medium uppercase tracking-wider">
-                  Worked example — PP13
-                </div>
-                <div className="text-sm text-white font-medium">
-                  Kilter Rural — Murray-Darling Basin Balanced Water Fund
-                </div>
-              </div>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
-              {(["input", "output", "outcome", "impact"] as const).map(
-                (key) => (
-                  <div key={key} className="px-6 py-6">
-                    <div className="text-xs uppercase tracking-widest text-brand-green/70 font-medium mb-2">
-                      {key.charAt(0).toUpperCase() + key.slice(1)}
-                    </div>
-                    <p className="text-sm text-white/70 leading-relaxed">
-                      {workedExample[key]}
-                    </p>
-                  </div>
-                )
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6. ABOUT ── */}
-      <section id="about" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-2xl mb-20">
+          <div className="max-w-2xl">
             <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
               About
             </span>
-            <h2 className="text-4xl font-display font-light text-navy-900 leading-tight mb-6">
+            <h2 className="text-4xl font-display font-light text-white leading-tight mb-6">
               Built on a research foundation.
             </h2>
-            <div className="space-y-4 text-navy-600 leading-relaxed">
+            <div className="space-y-4 text-white/60 leading-relaxed">
               <p>
                 ImpactX Markets was developed in partnership with the Digital
                 Finance Cooperative Research Centre (DFCRC) — Australia&apos;s
-                federally funded research consortium advancing innovation in
-                digital finance and capital markets.
+                federally funded research consortium advancing digital finance
+                and capital markets innovation.
               </p>
               <p>
-                The platform&apos;s Positive Pursuits taxonomy, Theory of
-                Change methodology, and minimum assurance standards were
-                developed through that research collaboration, grounding the
-                platform in rigour rather than marketing.
+                The platform&apos;s impact assessment framework — including the
+                Positive Pursuits taxonomy, Theory of Change methodology, and
+                minimum assurance standards — was developed through that
+                research partnership, grounding ImpactX in evidence rather than
+                convention.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 7. CONTACT ── */}
+      {/* ── CONTACT ── */}
       <section
         id="contact"
-        className="py-24 bg-navy-50 border-t border-navy-100"
+        className="py-24 bg-navy-900 border-t border-white/8"
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
@@ -388,16 +289,16 @@ export default function HomePage() {
               <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
                 Contact
               </span>
-              <h2 className="text-4xl font-display font-light text-navy-900 leading-tight mb-4">
+              <h2 className="text-4xl font-display font-light text-white leading-tight mb-4">
                 Request access to the prototype.
               </h2>
-              <p className="text-navy-600 leading-relaxed mb-6">
+              <p className="text-white/55 leading-relaxed mb-6">
                 The ImpactX Markets portal is currently in a private prototype
                 phase. If you&apos;re a family-office principal, advisor, or
-                wholesale investor with an interest in impact-certified private
-                markets, we&apos;d welcome a conversation.
+                wholesale investor seeking impact-structured private market
+                opportunities, we&apos;d welcome a conversation.
               </p>
-              <p className="text-sm text-navy-500 leading-relaxed">
+              <p className="text-sm text-white/35 leading-relaxed">
                 Submitting this form does not create any obligation on either
                 party, nor does it constitute an expression of interest in any
                 financial product.
@@ -411,20 +312,26 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-navy-900 border-t border-white/10 py-10 px-6">
+      <footer className="bg-navy-950 border-t border-white/8 py-10 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
             <div className="flex items-center gap-2.5 mb-2">
-              <Image src="/logo.png" alt="ImpactX Markets" width={28} height={28} className="rounded-sm" />
+              <Image
+                src="/logo.png"
+                alt="ImpactX Markets"
+                width={28}
+                height={28}
+                className="rounded-sm"
+              />
               <span className="text-white font-semibold text-sm">
                 ImpactX Markets
               </span>
             </div>
-            <p className="text-xs text-white/30 max-w-sm leading-relaxed">
+            <p className="text-xs text-white/25 max-w-sm leading-relaxed">
               {brand.legalDisclaimer}
             </p>
           </div>
-          <div className="text-xs text-white/25">
+          <div className="text-xs text-white/20">
             © {new Date().getFullYear()} ImpactX Markets. All rights reserved.
           </div>
         </div>

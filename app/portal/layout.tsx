@@ -15,7 +15,7 @@ export default function PortalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-navy-50 flex flex-col">
+    <div className="min-h-screen bg-navy-900 flex flex-col">
       {/* Confidential banner */}
       <div className="bg-navy-950 border-b border-white/10 py-1.5 px-6 text-center">
         <span className="text-xs text-white/40 tracking-wider uppercase font-medium">

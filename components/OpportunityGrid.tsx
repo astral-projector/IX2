@@ -127,7 +127,7 @@ function OpportunityTile({ opp }: { opp: Opportunity }) {
   return (
     <Link
       href={`/portal/opportunities/${opp.slug}`}
-      className="group flex flex-col bg-white border border-navy-100 rounded-sm hover:border-navy-300 hover:shadow-md transition-all duration-200 overflow-hidden"
+      className="group flex flex-col bg-navy-800 border border-white/8 rounded-sm hover:border-white/20 hover:shadow-lg hover:shadow-black/20 transition-all duration-200 overflow-hidden"
     >
       {/* Top accent line */}
       <div className="h-0.5 w-full" style={{ backgroundColor: accent }} />
@@ -142,10 +142,10 @@ function OpportunityTile({ opp }: { opp: Opportunity }) {
             {opp.avatarInitials}
           </div>
           <div className="min-w-0">
-            <div className="text-sm font-semibold text-navy-900 leading-tight truncate">
+            <div className="text-sm font-semibold text-white leading-tight truncate">
               {opp.issuer}
             </div>
-            <div className="text-xs text-navy-500 leading-snug mt-0.5 line-clamp-2">
+            <div className="text-xs text-white/55 leading-snug mt-0.5 line-clamp-2">
               {opp.projectName}
             </div>
           </div>
@@ -153,10 +153,10 @@ function OpportunityTile({ opp }: { opp: Opportunity }) {
 
         {/* Sector / Geography / Type */}
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs text-navy-400 truncate">
+          <span className="text-xs text-white/40 truncate">
             {sectorLabels[opp.sector]} · {opp.geography.split("—")[0].trim()}
           </span>
-          <span className="text-xs px-2 py-0.5 rounded-full border border-navy-200 text-navy-500 shrink-0">
+          <span className="text-xs px-2 py-0.5 rounded-full border border-white/15 text-white/45 shrink-0">
             {opp.type === "fund" ? "Fund" : "Direct Equity"}
           </span>
         </div>
@@ -171,10 +171,10 @@ function OpportunityTile({ opp }: { opp: Opportunity }) {
 
         {/* Issue size */}
         <div className="flex-1 flex flex-col justify-end gap-1">
-          <div className="text-base font-display font-light text-navy-900">
+          <div className="text-base font-display font-light text-white">
             {formatCurrency(opp.issueSize.amount, opp.issueSize.currency)}
           </div>
-          <div className="text-xs text-navy-400">
+          <div className="text-xs text-white/40">
             {opp.stage}
             {opp.closeDate
               ? ` · Closes ${new Date(opp.closeDate).toLocaleDateString("en-AU", { month: "short", year: "numeric" })}`
@@ -183,7 +183,7 @@ function OpportunityTile({ opp }: { opp: Opportunity }) {
         </div>
 
         {/* Status badges */}
-        <div className="flex items-center gap-2 pt-1 border-t border-navy-50">
+        <div className="flex items-center gap-2 pt-1 border-t border-white/8">
           <span
             className="text-xs px-2 py-0.5 rounded-full border font-medium"
             style={{
@@ -347,7 +347,7 @@ export function OpportunityGrid() {
             onChange={handleQueryChange}
             onKeyDown={handleKeyDown}
             placeholder={placeholders[placeholderIdx]}
-            className="w-full h-14 pl-11 pr-4 bg-white border border-navy-200 rounded-sm text-navy-900 placeholder-navy-400 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green transition-colors shadow-sm"
+            className="w-full h-14 pl-11 pr-4 bg-white/5 border border-white/12 rounded-sm text-white placeholder-white/30 text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green transition-colors shadow-sm"
           />
         </div>
 
@@ -358,7 +358,7 @@ export function OpportunityGrid() {
               <button
                 key={chip.id}
                 onClick={() => removeChip(chip.id)}
-                className="inline-flex items-center gap-1.5 px-3 py-1 bg-navy-900 text-white text-xs rounded-full font-medium hover:bg-navy-700 transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-green/20 text-brand-green border border-brand-green/30 text-xs rounded-full font-medium hover:bg-brand-green/30 transition-colors"
               >
                 {chip.label}
                 <X size={12} />
@@ -367,7 +367,7 @@ export function OpportunityGrid() {
             {chips.length > 0 && (
               <button
                 onClick={clearAll}
-                className="text-xs text-navy-400 hover:text-navy-600 underline"
+                className="text-xs text-white/35 hover:text-white/60 underline"
               >
                 Clear all
               </button>
@@ -383,7 +383,7 @@ export function OpportunityGrid() {
               <button
                 key={`${f.dimension}-${f.value}`}
                 onClick={() => addQuickFilter(f)}
-                className="px-3 py-1 text-xs border border-navy-200 text-navy-600 rounded-full hover:bg-navy-100 hover:border-navy-300 transition-colors"
+                className="px-3 py-1 text-xs border border-white/15 text-white/55 rounded-full hover:bg-white/8 hover:border-white/25 transition-colors"
               >
                 {f.label}
               </button>
@@ -393,7 +393,7 @@ export function OpportunityGrid() {
 
       {/* Results count */}
       <div className="mb-5 flex items-center justify-between">
-        <p className="text-xs text-navy-400 font-medium uppercase tracking-wider">
+        <p className="text-xs text-white/40 font-medium uppercase tracking-wider">
           {filtered.length} {filtered.length === 1 ? "opportunity" : "opportunities"}
           {chips.length > 0 ? " matching filters" : ""}
         </p>
@@ -408,8 +408,8 @@ export function OpportunityGrid() {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="text-4xl mb-4 text-navy-200">◯</div>
-          <p className="text-navy-500 font-medium mb-1">No opportunities match these filters</p>
+          <div className="text-4xl mb-4 text-white/15">◯</div>
+          <p className="text-white/40 font-medium mb-1">No opportunities match these filters</p>
           <button
             onClick={clearAll}
             className="text-sm text-brand-green hover:underline mt-2"

@@ -14,14 +14,12 @@ export function Nav({ variant = "public" }: NavProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const publicLinks = [
-    { label: "How it works", href: "/#how-it-works" },
     { label: "About", href: "/#about" },
     { label: "Contact", href: "/#contact" },
   ];
 
   const portalLinks = [
     { label: "Opportunities", href: "/portal" },
-    { label: "How it works", href: "/#how-it-works" },
     { label: "About", href: "/#about" },
   ];
 
