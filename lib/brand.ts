@@ -9,7 +9,7 @@ export const brand = {
     "Nothing on this site constitutes financial product advice, a recommendation, or an offer to acquire a financial product. Information is provided for general informational purposes only.",
   confidentialBannerText: "Confidential — Invite Only",
   johnWestCounter: {
-    start: 50,
+    start: 27,
     end: 6,
     startLabel: "deals reviewed",
     endLabel: "impact certified",
