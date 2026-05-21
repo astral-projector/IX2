@@ -116,7 +116,8 @@ export default function HomePage() {
                 A higher standard
               </span>
               <h2 className="text-4xl md:text-5xl font-display font-light text-white leading-tight mb-6">
-                From a broader market to a certified shortlist.
+                Surfacing investment opportunities where impact and returns
+                compound together.
               </h2>
               <div className="text-white/60 leading-relaxed space-y-3">
                 <p>

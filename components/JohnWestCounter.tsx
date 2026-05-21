@@ -14,12 +14,12 @@ function hexToRgba(hex: string, alpha: number): string {
 }
 
 const certifiedDeals = [
-  { name: "MDB Balanced Water Fund",        category: "Nature",   type: "Open-ended Fund", accent: "#4caf82" },
-  { name: "Wilton Zero-Emission Freight",   category: "Climate",  type: "Series B",        accent: "#4c8af0" },
-  { name: "Methane-Reduction Technology",   category: "Agritech", type: "Series A",        accent: "#4caf82" },
-  { name: "Silicon Anode Technology",       category: "Energy",   type: "Series B",        accent: "#4c8af0" },
-  { name: "Older Women's Housing Fund",     category: "Social",   type: "Private Credit",  accent: "#d4648a" },
-  { name: "Biodiverse Farmland Transition", category: "Nature",   type: "Open-ended Fund", accent: "#4caf82" },
+  { name: "Riverstone Water Opportunities Fund", category: "Nature",   type: "Open-ended Fund", accent: "#4caf82" },
+  { name: "Meridian Zero-Emission Logistics",    category: "Climate",  type: "Series B",        accent: "#4c8af0" },
+  { name: "Clearfield Emissions Technology",     category: "Agritech", type: "Series A",        accent: "#4caf82" },
+  { name: "Nexgen Battery Systems",              category: "Energy",   type: "Series B",        accent: "#4c8af0" },
+  { name: "Elara Community Housing Trust",       category: "Social",   type: "Private Credit",  accent: "#d4648a" },
+  { name: "Greenvale Farmland Restoration Fund", category: "Nature",   type: "Open-ended Fund", accent: "#4caf82" },
 ];
 
 // 27 tiles total; certified deals occupy these positions (spread across all three rows)
