@@ -230,12 +230,11 @@ export default function HomePage() {
             <h2 className="text-4xl font-display font-light text-white leading-tight mb-6">
               Built on a research foundation.
             </h2>
-            <div className="space-y-4 text-white/60 leading-relaxed">
+            <div className="text-white/60 leading-relaxed">
               <p>
-                ImpactX Markets was developed in partnership with the Digital
-                Finance Cooperative Research Centre (DFCRC), an independent
-                research consortium advancing digital finance and capital markets
-                innovation.
+                ImpactX Markets is a research and commercialization effort under
+                the Digital Finance Cooperative Research Centre (DFCRC) with the
+                goal of advancing digital finance and capital markets innovation.
               </p>
             </div>
           </div>
