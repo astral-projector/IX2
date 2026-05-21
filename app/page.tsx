@@ -144,7 +144,7 @@ export default function HomePage() {
               A broader view of value
             </span>
             <h2 className="text-4xl font-display font-light text-white leading-tight mb-4">
-              Return is one dimension.
+              Financial return is one dimension.
             </h2>
             <p className="text-white/55 leading-relaxed">
               The{" "}
