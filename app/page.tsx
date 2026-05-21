@@ -80,13 +80,7 @@ export default function HomePage() {
         />
         <div className="relative max-w-7xl mx-auto px-6 py-32 md:py-48">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full border border-brand-green/25 bg-brand-green/8">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-green" />
-              <span className="text-xs text-brand-green font-medium uppercase tracking-wider">
-                Private markets · Impact certified
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-white leading-[1.06] tracking-tight mb-6">
+<h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-white leading-[1.06] tracking-tight mb-6">
               Trustworthy Infrastructure for Impact Capital
             </h1>
             <p className="text-lg text-white/55 leading-relaxed mb-10 max-w-xl">
