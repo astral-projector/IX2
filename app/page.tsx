@@ -116,15 +116,17 @@ export default function HomePage() {
                 A higher standard
               </span>
               <h2 className="text-4xl md:text-5xl font-display font-light text-white leading-tight mb-6">
-                Surfacing investment opportunities where impact and returns
-                compound together.
+                From a broader market to a certified shortlist.
               </h2>
-              <div className="text-white/60 leading-relaxed">
+              <div className="text-white/60 leading-relaxed space-y-3">
                 <p>
-                  Each opportunity is reviewed before listing against a defined
-                  standard, including a Theory of Change, outcome KPIs, and
-                  minimum assurance criteria, giving investors clearer, more
-                  comparable, and more accountable impact opportunities.
+                  ImpactX reviews opportunities against a defined impact
+                  standard, including Theory of Change, outcome KPIs, and
+                  minimum assurance criteria.
+                </p>
+                <p>
+                  Only opportunities that meet the standard are surfaced as
+                  Impact Certified.
                 </p>
               </div>
             </div>
