@@ -127,10 +127,10 @@ export default function HomePage() {
               </h2>
               <div className="text-white/60 leading-relaxed">
                 <p>
-                  Credible impact investing demands the same rigour applied to
-                  financial analysis. ImpactX reviews each opportunity against a
-                  defined standard before listing: a Theory of Change, specific
-                  outcome KPIs, and minimum assurance criteria.
+                  Each opportunity is reviewed before listing against a defined
+                  standard, including a Theory of Change, outcome KPIs, and
+                  minimum assurance criteria, giving investors clearer, more
+                  comparable, and more accountable impact opportunities.
                 </p>
               </div>
             </div>
@@ -153,11 +153,16 @@ export default function HomePage() {
               Return is one dimension.
             </h2>
             <p className="text-white/55 leading-relaxed">
-              The five-capitals framework, associated with the work of Jay
-              Hughes Jr., offers a way to think about wealth beyond financial
-              capital alone. Across financial, human, social, intellectual, and
-              spiritual dimensions, impact investing may contribute positively
-              to long-term outcomes.
+              The{" "}
+              <a
+                href="https://jehjf.org/wp-content/uploads/2023/06/Five-Capitals-One-Page-JEHJF.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 underline underline-offset-2 hover:text-white/90 transition-colors"
+              >
+                five-capitals framework
+              </a>{" "}
+              offers a way to think about wealth beyond financial capital alone.
             </p>
           </div>
 
@@ -237,13 +242,6 @@ export default function HomePage() {
                 Finance Cooperative Research Centre (DFCRC), an independent
                 research consortium advancing digital finance and capital markets
                 innovation.
-              </p>
-              <p>
-                The platform&apos;s impact assessment framework, including the
-                Positive Pursuits taxonomy, Theory of Change methodology, and
-                minimum assurance standards, was developed through that research
-                partnership, grounding ImpactX in evidence rather than
-                convention.
               </p>
             </div>
           </div>
