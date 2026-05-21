@@ -119,15 +119,12 @@ export default function HomePage() {
                 Surfacing investment opportunities where impact and returns
                 compound together.
               </h2>
-              <div className="text-white/60 leading-relaxed space-y-3">
+              <div className="text-white/60 leading-relaxed">
                 <p>
-                  ImpactX reviews opportunities against a defined impact
-                  standard, including Theory of Change, outcome KPIs, and
-                  minimum assurance criteria.
-                </p>
-                <p>
-                  Only opportunities that meet the standard are surfaced as
-                  Impact Certified.
+                  Each opportunity is reviewed before listing against a defined
+                  standard, including a Theory of Change, outcome KPIs, and
+                  minimum assurance criteria, giving investors clearer, more
+                  comparable, and more accountable impact opportunities.
                 </p>
               </div>
             </div>

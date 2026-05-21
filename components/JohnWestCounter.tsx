@@ -1,226 +1,117 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useMotionValue, animate } from "framer-motion";
 import { brand } from "@/lib/brand";
 
-type Phase = "idle" | "reviewing" | "filtering" | "certified";
+type Phase = "idle" | "counting" | "collapsed";
 
-function hexToRgba(hex: string, alpha: number): string {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r},${g},${b},${alpha})`;
+function AnimatedNumber({ from, to, duration, isRunning }: {
+  from: number;
+  to: number;
+  duration: number;
+  isRunning: boolean;
+}) {
+  const count = useMotionValue(from);
+  const [display, setDisplay] = useState(from);
+
+  useEffect(() => {
+    if (!isRunning) return;
+    const controls = animate(count, to, {
+      duration,
+      ease: "easeOut",
+      onUpdate: (v) => setDisplay(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [isRunning, count, to, duration]);
+
+  return <span>{display}</span>;
 }
-
-const certifiedDeals = [
-  { name: "Riverstone Water Opportunities Fund", category: "Nature",   type: "Open-ended Fund", accent: "#4caf82" },
-  { name: "Meridian Zero-Emission Logistics",    category: "Climate",  type: "Series B",        accent: "#4c8af0" },
-  { name: "Clearfield Emissions Technology",     category: "Agritech", type: "Series A",        accent: "#4caf82" },
-  { name: "Nexgen Battery Systems",              category: "Energy",   type: "Series B",        accent: "#4c8af0" },
-  { name: "Elara Community Housing Trust",       category: "Social",   type: "Private Credit",  accent: "#d4648a" },
-  { name: "Greenvale Farmland Restoration Fund", category: "Nature",   type: "Open-ended Fund", accent: "#4caf82" },
-];
-
-// 27 tiles total; certified deals occupy these positions (spread across all three rows)
-const CERTIFIED_INDICES = [2, 6, 11, 15, 19, 24];
-const certifiedSet = new Set(CERTIFIED_INDICES);
-
-const tiles = Array.from({ length: 27 }, (_, i) => {
-  const dealIdx = CERTIFIED_INDICES.indexOf(i);
-  return {
-    index: i,
-    isCertified: certifiedSet.has(i),
-    deal: dealIdx >= 0 ? certifiedDeals[dealIdx] : null,
-  };
-});
 
 export function JohnWestCounter() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [phase, setPhase] = useState<Phase>("idle");
+  const inView = useInView(ref, { once: true, margin: "-100px" });
   const triggered = useRef(false);
+  const [phase, setPhase] = useState<Phase>("idle");
+
+  const { start, end, caveat } = brand.johnWestCounter;
 
   useEffect(() => {
     if (!inView || triggered.current) return;
     triggered.current = true;
-    setPhase("reviewing");
-    // tiles finish staggering in at ~27 * 38ms + 300ms ≈ 1330ms; pause then filter
-    const t1 = setTimeout(() => setPhase("filtering"), 2100);
-    // filtering takes ~750ms, then reveal certified list
-    const t2 = setTimeout(() => setPhase("certified"), 2950);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    setPhase("counting");
+    // counting runs for ~2.4s, then 0.6s pause before collapsing
+    const t1 = setTimeout(() => setPhase("collapsed"), 3200);
+    return () => clearTimeout(t1);
   }, [inView]);
 
-  const isCertifying = phase === "filtering" || phase === "certified";
+  const counting  = phase !== "idle";
+  const collapsed = phase === "collapsed";
 
   return (
-    <div ref={ref} className="w-full max-w-sm">
+    <div ref={ref} className="flex flex-col items-center gap-10 w-full max-w-md">
 
-      {/* ── Tile grid: 9 cols × 3 rows = 27 tiles ── */}
-      <div className="grid grid-cols-9 gap-1.5 mb-4">
-        {tiles.map((tile) => {
-          const dimmed = isCertifying && !tile.isCertified;
-          return (
-            <motion.div
-              key={tile.index}
-              className="relative rounded-sm overflow-hidden border"
-              style={{
-                aspectRatio: "1",
-                backgroundColor: tile.isCertified && isCertifying
-                  ? hexToRgba(tile.deal!.accent, 0.09)
-                  : "rgba(255,255,255,0.04)",
-                borderColor: tile.isCertified && isCertifying
-                  ? hexToRgba(tile.deal!.accent, 0.38)
-                  : "rgba(255,255,255,0.07)",
-                transition: "background-color 0.65s ease, border-color 0.65s ease",
-              }}
-              initial={{ opacity: 0, scale: 0.55, filter: "blur(0px)" }}
-              animate={
-                phase === "idle"
-                  ? { opacity: 0, scale: 0.55, filter: "blur(0px)" }
-                  : dimmed
-                  ? { opacity: 0.12, scale: 1, filter: "blur(1.5px)" }
-                  : { opacity: 1, scale: 1, filter: "blur(0px)" }
-              }
-              transition={
-                phase === "reviewing"
-                  ? { duration: 0.3, delay: tile.index * 0.038, ease: "easeOut" }
-                  : { duration: 0.75, ease: "easeInOut", delay: 0 }
-              }
-            >
-              {/* Certified check + category label — fades in when filtering begins */}
-              {tile.isCertified && (
-                <motion.div
-                  className="absolute inset-0 flex flex-col items-center justify-center gap-[3px]"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: isCertifying ? 1 : 0 }}
-                  transition={{ duration: 0.4, delay: 0.25 }}
-                >
-                  <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
-                    <path
-                      d="M1.5 5l2.5 2.5L8.5 2"
-                      stroke={tile.deal!.accent}
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <span
-                    className="text-[4.5px] uppercase tracking-[0.07em] font-bold leading-none text-center"
-                    style={{ color: tile.deal!.accent }}
-                  >
-                    {tile.deal!.category}
-                  </span>
-                </motion.div>
-              )}
-            </motion.div>
-          );
-        })}
-      </div>
+      {/* ── Main counter row ── */}
+      <div className="flex items-center justify-center gap-8 w-full">
 
-      {/* ── Counter row ── */}
-      <div className="flex items-center gap-3 mb-5">
-        <div className="flex items-center gap-2 shrink-0">
-          <span className="text-xl font-display font-light text-white/28 tabular-nums leading-none">
-            27
-          </span>
-          <span className="text-[8px] uppercase tracking-widest text-white/20 font-medium leading-tight">
-            deals<br />reviewed
-          </span>
-        </div>
-
+        {/* 27 reviewed — fades out after counting */}
         <motion.div
-          className="flex flex-1 items-center gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isCertifying ? 1 : 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          animate={{ opacity: collapsed ? 0 : 1, x: collapsed ? -12 : 0 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          className="flex flex-col items-center shrink-0"
         >
-          <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-brand-green/25" />
-          <svg width="11" height="11" viewBox="0 0 14 14" fill="none" className="shrink-0 text-brand-green/40">
-            <path
-              d="M3 7h8M8 4l3 3-3 3"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </motion.div>
-
-        <motion.div
-          className="flex items-center gap-2 shrink-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isCertifying ? 1 : 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-        >
-          <span className="text-xl font-display font-light text-brand-green tabular-nums leading-none">
-            6
-          </span>
-          <span className="text-[8px] uppercase tracking-widest text-brand-green/60 font-medium leading-tight">
-            impact<br />certified
-          </span>
-        </motion.div>
-      </div>
-
-      {/* ── Certified deal list ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: phase === "certified" ? 1 : 0, y: phase === "certified" ? 0 : 8 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        <p className="text-[8px] text-white/20 uppercase tracking-widest font-semibold mb-2 text-center">
-          Certified opportunities
-        </p>
-
-        <div className="border-t border-white/8">
-          {/* Column headers */}
-          <div className="flex items-center gap-2.5 py-1.5 border-b border-white/8">
-            <div className="w-[6px] shrink-0" />
-            <span className="text-[7.5px] uppercase tracking-wider text-white/18 font-medium w-[50px] shrink-0">
-              Category
-            </span>
-            <span className="text-[7.5px] uppercase tracking-wider text-white/18 font-medium flex-1">
-              Opportunity
-            </span>
-            <span className="text-[7.5px] uppercase tracking-wider text-white/18 font-medium text-right shrink-0">
-              Type
-            </span>
+          <div className="text-8xl md:text-9xl font-display font-light text-white/18 tabular-nums leading-none">
+            {start}
           </div>
+          <div className="mt-3 text-[10px] text-white/22 uppercase tracking-widest font-medium text-center leading-loose">
+            deals<br />reviewed
+          </div>
+        </motion.div>
 
-          {/* Deal rows */}
-          {certifiedDeals.map((deal, i) => (
-            <motion.div
-              key={deal.name}
-              className="flex items-center gap-2.5 py-1.5 border-b border-white/5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: phase === "certified" ? 1 : 0 }}
-              transition={{ delay: 0.08 + i * 0.07, duration: 0.3 }}
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full shrink-0"
-                style={{ backgroundColor: deal.accent }}
-              />
-              <span
-                className="text-[8px] uppercase tracking-wide font-semibold w-[50px] shrink-0 leading-none"
-                style={{ color: deal.accent }}
-              >
-                {deal.category}
-              </span>
-              <span className="flex-1 text-[10px] text-white/50 truncate leading-tight min-w-0">
-                {deal.name}
-              </span>
-              <span className="text-[8px] text-white/25 shrink-0 text-right whitespace-nowrap">
-                {deal.type}
-              </span>
-            </motion.div>
-          ))}
-        </div>
+        {/* Divider with filter icon — fades with the 27 */}
+        <motion.div
+          animate={{ opacity: collapsed ? 0 : 0.2 }}
+          transition={{ duration: 0.5, ease: "easeIn" }}
+          className="flex flex-col items-center gap-1.5 shrink-0 pb-10"
+        >
+          <div className="w-px h-8 bg-white/40" />
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" className="text-white/60">
+            <path d="M4 6h12M6 10h8M8 14h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+          <div className="w-px h-8 bg-white/40" />
+        </motion.div>
 
-        <p className="text-[8px] text-white/15 text-center mt-3 leading-relaxed">
-          {brand.johnWestCounter.caveat}
-        </p>
-      </motion.div>
+        {/* 6 certified — scales up and brightens once 27 is gone */}
+        <motion.div
+          animate={{
+            scale: collapsed ? 1.22 : 1,
+            x: collapsed ? -20 : 0,
+          }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+          className="flex flex-col items-center shrink-0"
+        >
+          <div className="text-8xl md:text-9xl font-display font-light text-brand-green tabular-nums leading-none">
+            <AnimatedNumber from={start} to={end} duration={2.4} isRunning={counting} />
+          </div>
+          <motion.div
+            animate={{ opacity: collapsed ? 1 : 0.45 }}
+            transition={{ duration: 0.5 }}
+            className="mt-3 text-[10px] text-brand-green/70 uppercase tracking-widest font-medium text-center leading-loose"
+          >
+            impact<br />certified
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* ── Caveat ── */}
+      <motion.p
+        animate={{ opacity: collapsed ? 1 : 0 }}
+        initial={{ opacity: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="text-[9px] text-white/18 text-center leading-relaxed max-w-xs"
+      >
+        {caveat}
+      </motion.p>
     </div>
   );
 }
