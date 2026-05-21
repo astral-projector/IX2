@@ -39,16 +39,18 @@ export function JohnWestCounter() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [phase, setPhase] = useState<Phase>("idle");
+  const triggered = useRef(false);
 
   useEffect(() => {
-    if (!inView || phase !== "idle") return;
+    if (!inView || triggered.current) return;
+    triggered.current = true;
     setPhase("reviewing");
     // tiles finish staggering in at ~27 * 38ms + 300ms ≈ 1330ms; pause then filter
     const t1 = setTimeout(() => setPhase("filtering"), 2100);
     // filtering takes ~750ms, then reveal certified list
     const t2 = setTimeout(() => setPhase("certified"), 2950);
     return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, [inView, phase]);
+  }, [inView]);
 
   const isCertifying = phase === "filtering" || phase === "certified";
 
