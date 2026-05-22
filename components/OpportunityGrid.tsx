@@ -120,112 +120,118 @@ function sortedOpportunities(opps: Opportunity[]): Opportunity[] {
 
 // ─── Opportunity Card ─────────────────────────────────────────────────────────
 
-function FieldRow({ label, value }: { label: string; value: string | null }) {
+function MetricCell({ label, value }: { label: string; value: string | null }) {
   return (
-    <div className="flex flex-col gap-0.5">
-      <span className="text-[10px] uppercase tracking-wider text-white/30 font-medium">{label}</span>
-      <span className="text-xs text-white/75 font-medium truncate">
-        {value ?? <span className="text-white/25 font-normal italic">TBC at listing</span>}
+    <div className="bg-navy-800 px-3 py-2.5 flex flex-col gap-0.5">
+      <span className="text-[9px] uppercase tracking-wider text-white/25 font-medium">{label}</span>
+      <span className="text-[11px] text-white/70 font-medium truncate">
+        {value ?? <span className="text-white/22 font-normal italic">TBC</span>}
       </span>
     </div>
   );
 }
 
 function OpportunityCard({ opp }: { opp: Opportunity }) {
-  const { accent } = opp.heroPalette;
+  const { accent, baseDark } = opp.heroPalette;
+  const showReturn = opp.targetNetReturns !== null;
 
   return (
     <Link
       href={`/portal/opportunities/${opp.slug}`}
-      className="group flex flex-col bg-navy-800 border border-white/8 rounded-md hover:border-white/20 hover:shadow-xl hover:shadow-black/30 transition-all duration-200 overflow-hidden"
+      className="group flex flex-col bg-navy-800 border border-white/8 rounded-md hover:border-white/18 hover:-translate-y-px hover:shadow-xl hover:shadow-black/40 transition-all duration-200 overflow-hidden"
     >
-      {/* Top accent stripe — category colour only, 3px */}
-      <div className="h-[3px] w-full shrink-0" style={{ backgroundColor: accent }} />
+      {/* Thick accent stripe */}
+      <div className="h-1 w-full shrink-0" style={{ backgroundColor: accent }} />
 
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 p-5 gap-4">
 
         {/* Header */}
-        <div className="px-5 pt-5 pb-4 flex items-start gap-3">
+        <div className="flex items-start justify-between gap-2">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="text-[10px] font-medium tracking-wide text-white/35 truncate">
+                {opp.issuer}
+              </span>
+              {opp.status === "live" && (
+                <span className="inline-flex items-center gap-1 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[10px] text-emerald-400 font-medium">Live</span>
+                </span>
+              )}
+            </div>
+            <h3 className="text-sm font-semibold text-white leading-snug line-clamp-2 group-hover:text-brand-green transition-colors duration-200">
+              {opp.projectName}
+            </h3>
+          </div>
           <div
-            className="w-10 h-10 rounded-sm flex items-center justify-center text-white/80 text-xs font-bold shrink-0 mt-0.5 border border-white/8"
-            style={{ backgroundColor: opp.heroPalette.baseDark }}
+            className="w-9 h-9 rounded-sm flex items-center justify-center text-white/65 text-[11px] font-bold shrink-0 border border-white/8"
+            style={{ backgroundColor: baseDark }}
           >
             {opp.avatarInitials}
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className="text-[11px] text-white/35 mb-1 font-medium tracking-wide truncate">
-              {opp.issuer}
-            </div>
-            <div className="text-sm font-semibold text-white leading-snug line-clamp-2 group-hover:text-brand-green transition-colors duration-200">
-              {opp.projectName}
-            </div>
           </div>
         </div>
 
         {/* Type badges */}
-        <div className="px-5 pb-4 flex items-center gap-2">
-          <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-sm border text-brand-green border-brand-green/25 bg-brand-green/[0.07]">
+        <div className="flex items-center gap-1.5">
+          <span
+            className="text-[11px] font-medium px-2 py-0.5 rounded-sm border"
+            style={{ color: accent, borderColor: `${accent}44`, backgroundColor: `${accent}12` }}
+          >
             {opp.investmentTypeLabel}
           </span>
-          <span className="text-[11px] text-white/30 border border-white/8 px-2.5 py-0.5 rounded-sm">
+          <span className="text-[11px] text-white/28 border border-white/8 px-2 py-0.5 rounded-sm">
             {opp.assetClass}
           </span>
         </div>
 
-        {/* Key facts */}
-        <div className="mx-5 mb-4 grid grid-cols-2 gap-x-5 gap-y-3.5 border-t border-b border-white/6 py-4">
-          <FieldRow label="Issue Size" value={formatCurrency(opp.issueSize.amount, opp.issueSize.currency)} />
-          <FieldRow
+        {/* Metric grid */}
+        <div className="grid grid-cols-2 gap-px bg-white/6 rounded-sm overflow-hidden">
+          <MetricCell label="Raise" value={formatCurrency(opp.issueSize.amount, opp.issueSize.currency)} />
+          <MetricCell
             label="Min. Investment"
-            value={
-              opp.minimumInvestable
-                ? formatMinInvestment(opp.minimumInvestable.amount, opp.minimumInvestable.currency)
-                : null
-            }
+            value={opp.minimumInvestable ? formatMinInvestment(opp.minimumInvestable.amount, opp.minimumInvestable.currency) : null}
           />
-          <FieldRow label="Liquidity" value={opp.expectedLiquidity} />
-          <FieldRow label="Term" value={opp.expectedMaturity} />
+          <MetricCell
+            label={showReturn ? "Target Return" : "Liquidity"}
+            value={showReturn ? opp.targetNetReturns : opp.expectedLiquidity}
+          />
+          <MetricCell label="Term" value={opp.expectedMaturity} />
         </div>
 
         {/* Positive Pursuit */}
-        <div className="px-5 mb-3.5 flex items-baseline gap-2">
-          <span className="font-mono text-[10px] font-semibold text-brand-green/50 shrink-0">
-            {opp.primaryPositivePursuit.code}
-          </span>
-          <span className="text-[11px] text-brand-green/75 leading-snug">
-            {opp.primaryPositivePursuit.label}
-          </span>
+        <div className="flex items-start gap-2">
+          <span
+            className="w-1.5 h-1.5 rounded-full mt-[3px] shrink-0"
+            style={{ backgroundColor: accent }}
+          />
+          <div className="min-w-0">
+            <span className="font-mono text-[10px] font-semibold text-white/30 mr-1.5">
+              {opp.primaryPositivePursuit.code}
+            </span>
+            <span className="text-[11px] text-white/50 leading-snug">
+              {opp.primaryPositivePursuit.label}
+            </span>
+          </div>
         </div>
 
-        {/* Tags */}
-        <div className="px-5 mb-4 flex flex-wrap gap-1.5">
-          {opp.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-[10px] px-2 py-0.5 rounded-sm border border-white/8 text-white/28"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+      </div>
 
-        {/* Footer */}
-        <div className="mt-auto px-5 py-3 border-t border-white/6 flex items-center gap-2">
-          {opp.status === "live" ? (
-            <span className="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-900/30 text-emerald-400 border border-emerald-700/30 font-medium shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              Live
-            </span>
-          ) : (
-            <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-white/5 text-white/35 border border-white/10 font-medium shrink-0">
-              Coming soon
-            </span>
-          )}
-          <span className="ml-auto text-[11px] px-2.5 py-0.5 rounded-full border font-medium shrink-0 text-brand-green border-brand-green/25 bg-brand-green/[0.07]">
-            Impact Certified
+      {/* Footer */}
+      <div className="px-5 py-3 border-t border-white/6 flex items-center gap-1.5">
+        {opp.tags.slice(0, 2).map((tag) => (
+          <span
+            key={tag}
+            className="text-[10px] px-2 py-0.5 rounded-sm border border-white/8 text-white/28 truncate max-w-[100px]"
+          >
+            {tag}
           </span>
+        ))}
+        <div className="ml-auto flex items-center gap-1 text-[10px] font-medium text-brand-green shrink-0">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <path d="M2 5.5l2 2L8 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span>Certified</span>
         </div>
-
       </div>
     </Link>
   );

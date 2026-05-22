@@ -221,10 +221,10 @@ export const opportunities: Opportunity[] = [
     assuranceProvider: null,
     avatarInitials: "NE",
     heroPalette: {
-      base: "#1a2640",
-      baseDark: "#0f1828",
-      accent: "#4c8af0",
-      overlay: "rgba(26,38,64,0.85)",
+      base: "#162535",
+      baseDark: "#0f1a26",
+      accent: "#5b8fb5",
+      overlay: "rgba(22,37,53,0.85)",
     },
     investmentTypeLabel: "Series A",
     tags: ["Zero-Emission Transport", "Climate", "Infrastructure"],
@@ -392,10 +392,10 @@ export const opportunities: Opportunity[] = [
     assuranceProvider: null,
     avatarInitials: "SI",
     heroPalette: {
-      base: "#1a2640",
-      baseDark: "#0f1828",
-      accent: "#4c8af0",
-      overlay: "rgba(26,38,64,0.85)",
+      base: "#162535",
+      baseDark: "#0f1a26",
+      accent: "#5b8fb5",
+      overlay: "rgba(22,37,53,0.85)",
     },
     investmentTypeLabel: "Series B",
     tags: ["Advanced Materials", "Clean Energy", "Climate"],
@@ -478,10 +478,10 @@ export const opportunities: Opportunity[] = [
     assuranceProvider: null,
     avatarInitials: "SV",
     heroPalette: {
-      base: "#2a1520",
-      baseDark: "#1a0d15",
-      accent: "#d4648a",
-      overlay: "rgba(42,21,32,0.85)",
+      base: "#2a1d14",
+      baseDark: "#1c1410",
+      accent: "#c07a52",
+      overlay: "rgba(42,29,20,0.85)",
     },
     investmentTypeLabel: "Fund",
     tags: ["Social Housing", "Community", "Inclusion"],
@@ -530,10 +530,10 @@ export const sectorLabels: Record<Opportunity["sector"], string> = {
 
 export const sectorColors: Record<Opportunity["sector"], string> = {
   "nature-based": "#1a3a2a",
-  "social-housing": "#2a1520",
-  "energy-transport": "#1a2640",
+  "social-housing": "#2a1d14",
+  "energy-transport": "#162535",
   agritech: "#1a3a2a",
-  "advanced-materials": "#1a2640",
+  "advanced-materials": "#162535",
 };
 
 // Three-category palette: green (nature/agri), blue (energy/climate), red (social)
@@ -547,7 +547,7 @@ export type CategoryPalette = {
 export const categoryPalettes: Record<Opportunity["sector"], CategoryPalette> = {
   "nature-based":      { base: "#1a3a2a", baseDark: "#0f2218", accent: "#4caf82", overlay: "rgba(26,58,42,0.82)" },
   agritech:            { base: "#1a3a2a", baseDark: "#0f2218", accent: "#4caf82", overlay: "rgba(26,58,42,0.82)" },
-  "energy-transport":  { base: "#1a2640", baseDark: "#0f1828", accent: "#4c8af0", overlay: "rgba(26,38,64,0.85)" },
-  "advanced-materials":{ base: "#1a2640", baseDark: "#0f1828", accent: "#4c8af0", overlay: "rgba(26,38,64,0.85)" },
-  "social-housing":    { base: "#2a1520", baseDark: "#1a0d15", accent: "#d4648a", overlay: "rgba(42,21,32,0.85)" },
+  "energy-transport":  { base: "#162535", baseDark: "#0f1a26", accent: "#5b8fb5", overlay: "rgba(22,37,53,0.85)" },
+  "advanced-materials":{ base: "#162535", baseDark: "#0f1a26", accent: "#5b8fb5", overlay: "rgba(22,37,53,0.85)" },
+  "social-housing":    { base: "#2a1d14", baseDark: "#1c1410", accent: "#c07a52", overlay: "rgba(42,29,20,0.85)" },
 };
