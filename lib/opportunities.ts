@@ -329,7 +329,7 @@ export const opportunities: Opportunity[] = [
     slug: "sicona-series-b",
     status: "coming-soon",
     issuer: "Sicona Battery Technologies",
-    projectName: "Series B — Next-Generation Silicon Anode",
+    projectName: "Series B, Sicona",
     subtitle:
       "High-energy-density silicon anode materials enabling the next generation of lithium-ion batteries for EVs and grid storage.",
     sector: "advanced-materials",
