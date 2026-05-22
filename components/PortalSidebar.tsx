@@ -8,8 +8,6 @@ import {
   Search,
   Briefcase,
   BarChart3,
-  FolderOpen,
-  FileText,
   MessageSquare,
   Settings,
 } from "lucide-react";
@@ -36,13 +34,6 @@ const sections: { heading: string; items: NavItem[] }[] = [
     items: [
       { label: "Current Investments", href: "/portal/investments", icon: Briefcase },
       { label: "Portfolio Impact", href: "/portal/impact", icon: BarChart3 },
-    ],
-  },
-  {
-    heading: "Resources",
-    items: [
-      { label: "Data Room", href: "/portal/data-room", icon: FolderOpen },
-      { label: "Impact Reports", href: "/portal/reports", icon: FileText },
     ],
   },
   {

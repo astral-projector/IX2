@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { EnquireModal } from "@/components/EnquireModal";
-import { type Opportunity, formatCurrency, formatMinInvestment, sectorLabels } from "@/lib/opportunities";
+import { type Opportunity, formatCurrency, formatMinInvestment } from "@/lib/opportunities";
 import { FileText, Folder, FolderOpen, Lock } from "lucide-react";
 
 interface OpportunityDetailProps {
@@ -56,6 +56,28 @@ function DataRoomFolder({
               )}
             </div>
           ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ImpactDocLink({ name }: { name: string }) {
+  const [tooltip, setTooltip] = useState(false);
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setTooltip((v) => !v)}
+        className="w-full flex items-center gap-3 px-4 py-3 bg-white/5 border border-white/10 rounded-sm hover:bg-white/8 transition-colors text-left"
+      >
+        <FileText size={15} className="text-white/35 shrink-0" />
+        <span className="text-sm text-white/60 flex-1">{name}</span>
+        <Lock size={12} className="text-white/30 shrink-0" />
+      </button>
+      {tooltip && (
+        <div className="absolute left-0 right-0 bottom-full mb-1 z-10 bg-navy-900 border border-white/10 text-white/80 text-xs rounded-sm px-3 py-2 shadow-lg">
+          Document access available on request. Please use the Enquire button to request access.
         </div>
       )}
     </div>
@@ -134,10 +156,7 @@ export function OpportunityDetail({ opportunity: opp }: OpportunityDetailProps) 
           </h1>
           <p className="text-white/60 text-base max-w-xl mb-6">{opp.subtitle}</p>
           <div className="text-3xl font-display font-light" style={{ color: accent }}>
-            {formatCurrency(opp.issueSize.amount, opp.issueSize.currency)}
-          </div>
-          <div className="text-white/40 text-sm mt-1">
-            {sectorLabels[opp.sector]} · {opp.geography}
+            Raise: {formatCurrency(opp.issueSize.amount, opp.issueSize.currency)}
           </div>
         </div>
       </div>
@@ -172,22 +191,13 @@ export function OpportunityDetail({ opportunity: opp }: OpportunityDetailProps) 
           {/* OVERVIEW TAB */}
           <TabsContent value="overview">
             <div className="grid lg:grid-cols-3 gap-10">
-              <div className="lg:col-span-2 space-y-8">
-                <div>
-                  <h2 className="text-xs uppercase tracking-widest text-white/40 font-medium mb-3">
-                    Capital Requirement
-                  </h2>
-                  <p className="text-white/70 leading-relaxed">
-                    {opp.capitalRequirement}
-                  </p>
-                </div>
-                <div>
-                  <h2 className="text-xs uppercase tracking-widest text-white/40 font-medium mb-3">
-                    Use of Proceeds
-                  </h2>
-                  <p className="text-white/70 leading-relaxed">
-                    {opp.useOfProceeds}
-                  </p>
+              <div className="lg:col-span-2">
+                <h2 className="text-xs uppercase tracking-widest text-white/40 font-medium mb-4">
+                  General
+                </h2>
+                <div className="space-y-4 text-white/70 leading-relaxed">
+                  <p>{opp.capitalRequirement}</p>
+                  <p>{opp.useOfProceeds}</p>
                 </div>
               </div>
 
@@ -243,19 +253,6 @@ export function OpportunityDetail({ opportunity: opp }: OpportunityDetailProps) 
                     {opp.primaryPositivePursuit.label}
                   </span>
                 </div>
-                {opp.secondaryPositivePursuit && (
-                  <div
-                    className="inline-flex items-center gap-3 px-4 py-3 rounded-sm border ml-3"
-                    style={{ borderColor: `${opp.heroPalette.accent}25`, background: `${opp.heroPalette.accent}08` }}
-                  >
-                    <span className="text-sm font-bold text-white/45">
-                      {opp.secondaryPositivePursuit.code}
-                    </span>
-                    <span className="text-sm text-white/55">
-                      {opp.secondaryPositivePursuit.label}
-                    </span>
-                  </div>
-                )}
               </div>
 
               {/* Theory of Change */}
@@ -267,7 +264,7 @@ export function OpportunityDetail({ opportunity: opp }: OpportunityDetailProps) 
                   {(["input", "output", "outcome", "impact"] as const).map((key, i) => (
                     <div
                       key={key}
-                      className="rounded-sm border border-white/8 p-4 bg-white/5"
+                      className="rounded-sm border border-white/8 p-4 bg-white/5 flex flex-col"
                     >
                       <div className="flex items-center gap-1.5 mb-2">
                         <span
@@ -283,6 +280,25 @@ export function OpportunityDetail({ opportunity: opp }: OpportunityDetailProps) 
                       <p className="text-sm text-white/70 leading-snug">
                         {opp.theoryOfChange[key]}
                       </p>
+                      {key === "outcome" && opp.outcomeKpis.some((k) => k.value !== null) && (
+                        <div className="mt-4 pt-3 border-t border-white/10 space-y-3">
+                          {opp.outcomeKpis
+                            .filter((k) => k.value !== null)
+                            .map((kpi, ki) => (
+                              <div key={ki}>
+                                <div
+                                  className="text-2xl font-display font-light leading-none mb-0.5"
+                                  style={{ color: opp.heroPalette.accent }}
+                                >
+                                  {kpi.value}
+                                </div>
+                                <div className="text-[11px] text-white/40 leading-tight">
+                                  {kpi.unit}
+                                </div>
+                              </div>
+                            ))}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -323,26 +339,25 @@ export function OpportunityDetail({ opportunity: opp }: OpportunityDetailProps) 
                 </div>
               </div>
 
-              {/* Assurance & reporting */}
-              <div className="space-y-3 text-sm text-white/50 border-t border-white/8 pt-6">
-                <div className="flex items-start gap-2">
-                  <span className="text-white/40 shrink-0">Reporting cadence:</span>
-                  <span className="text-white/70 capitalize font-medium">
-                    Reported {opp.reportingCadence.replace("-", " ")}
-                  </span>
+              {/* Impact documents */}
+              <div>
+                <h2 className="text-xs uppercase tracking-widest text-white/40 font-medium mb-4">
+                  Impact Documents
+                </h2>
+                <div className="flex flex-col gap-2">
+                  {["Annual Impact Report", "Independent Assurance", "Break Even Attestation"].map(
+                    (docName) => <ImpactDocLink key={docName} name={docName} />
+                  )}
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-white/40 shrink-0">Independent assurance:</span>
-                  <span className="text-white/70 font-medium">
-                    {opp.assuranceProvider ?? "To be confirmed at listing"}
+                <p className="mt-3 text-xs text-white/30">
+                  Reporting cadence:{" "}
+                  <span className="capitalize">
+                    {opp.reportingCadence.replace("-", " ")}
                   </span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-white/40 shrink-0">Break-Even attestation:</span>
-                  <span className="text-white/70">
-                    A Break-Even analysis has been completed to confirm impact integrity.
-                  </span>
-                </div>
+                  {opp.assuranceProvider && (
+                    <> · Assured by {opp.assuranceProvider}</>
+                  )}
+                </p>
               </div>
             </div>
           </TabsContent>

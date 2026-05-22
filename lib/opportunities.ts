@@ -73,12 +73,12 @@ export const opportunities: Opportunity[] = [
     expectedLiquidity: "Annual redemption window",
     distributionFrequency: "Annual",
     expectedMaturity: "Open-ended",
-    closeDate: "2025-09-30",
+    closeDate: "2026-12-31",
     minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
-      "The fund seeks to raise $50m AUD to acquire a diversified portfolio of water entitlements and farmland across the Murray-Darling Basin.",
+      "The Murray-Darling Basin Balanced Water Fund is an open-ended impact investment fund managed by Kilter Rural, one of Australia's leading water entitlement specialists. The fund acquires diversified water entitlements and integrated farmland across the Murray-Darling Basin, generating financial returns through agricultural operations and water trading, alongside verified environmental outcomes through structured donations of water to the Murray-Darling Basin Authority.",
     useOfProceeds:
-      "Proceeds are deployed into water entitlements, environmental water trading, and integrated farming operations that generate both financial returns and verified ecological outcomes.",
+      "The fund offers investors exposure to a real asset class with established income streams and a structured environmental mandate. Through a formal lease-back arrangement with the Murray-Darling Basin Authority, the fund commits to donating environmental water allocations that contribute to the restoration of ecological flows in the Basin's most degraded river systems. Impact outcomes are independently assured by RMCG, a specialist natural resource management consultancy.",
     investmentHighlights: [
       "Dual revenue streams: agricultural income + water trading",
       "Environmental water donations underpinned by a formal lease-back arrangement with Murray-Darling Basin Authority",
@@ -165,12 +165,12 @@ export const opportunities: Opportunity[] = [
     expectedLiquidity: "Strategic exit or IPO",
     distributionFrequency: null,
     expectedMaturity: "5–7 years",
-    closeDate: "2025-12-31",
+    closeDate: "2026-12-31",
     minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
-      "NET is raising $35m AUD in Series B equity to fund construction of the Wilton freight hub and expand its fleet of battery-electric heavy vehicles.",
+      "New Energy Transport (NET) is developing Australia's first purpose-built zero-emission heavy freight hub at Wilton, New South Wales. The Series A raise will fund the construction of the Wilton charging depot and maintenance facilities, along with the acquisition of a commercial fleet of battery-electric heavy vehicles to operate on contracted freight routes.",
     useOfProceeds:
-      "Infrastructure construction at Wilton (charging depot, maintenance facilities), fleet acquisition (BEV prime movers), and working capital for the first tranche of freight contracts.",
+      "The opportunity targets the hard-to-abate heavy freight sector, which accounts for a disproportionate share of transport-related emissions in Australia. NET's asset-backed model combines long-term freight contracts with major logistics partners, federal ARENA infrastructure grant support, and a proprietary fleet management platform designed to optimise charge scheduling and route efficiency. Wilton represents the first site in a planned national network of zero-emission freight hubs.",
     investmentHighlights: [
       "First-mover position in Australian zero-emission heavy freight",
       "Long-term freight agreements with major logistics partners (undisclosed, under NDA)",
@@ -258,12 +258,12 @@ export const opportunities: Opportunity[] = [
     expectedLiquidity: null,
     distributionFrequency: null,
     expectedMaturity: "5–8 years",
-    closeDate: null,
+    closeDate: "2026-12-31",
     minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
-      "Number8Bio is preparing a Series A raise to fund clinical trials, regulatory approval processes, and initial commercial-scale production.",
+      "Number8Bio is commercialising a proprietary biological feed supplement that measurably reduces enteric methane emissions from ruminant livestock. Developed from AgResearch NZ origins, the formulation has demonstrated methane reduction efficacy in peer-reviewed trials and is progressing toward Australasian regulatory approval. The Series A raise will fund the completion of clinical trials, regulatory approvals, and initial commercial-scale production.",
     useOfProceeds:
-      "R&D completion, Australasian regulatory approval, pilot commercial production, and market development with pastoral farming partners.",
+      "The addressable market spans over 26 million cattle and 70 million sheep in Australia alone, with strong strategic interest from major pastoral operators. Number8Bio's intellectual property is protected via patent filings across Australia, New Zealand, and the United States. The company's technology directly addresses one of the most significant and underserved sources of agricultural greenhouse gas emissions globally.",
     investmentHighlights: [
       "Proprietary biological formulation with peer-reviewed methane reduction efficacy",
       "Addressable market: 26m+ cattle and 70m+ sheep in Australia alone",
@@ -342,12 +342,12 @@ export const opportunities: Opportunity[] = [
     expectedLiquidity: null,
     distributionFrequency: null,
     expectedMaturity: "5–7 years",
-    closeDate: null,
+    closeDate: "2026-12-31",
     minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
-      "Sicona is preparing a Series B raise to scale pilot-plant production and enter supply agreements with battery cell manufacturers.",
+      "Sicona Battery Technologies is scaling the production of its breakthrough silicon composite anode material, developed from foundational research at the University of New South Wales (UNSW). Silicon anodes significantly outperform conventional graphite anodes in energy density, and Sicona's composite formulation has achieved over 800 Wh/L — a step-change that enables longer-range electric vehicles and more cost-effective grid storage. The Series B raise will fund pilot-plant scale-up and entry into supply agreements with battery cell manufacturers.",
     useOfProceeds:
-      "Pilot-plant scale-up, materials qualification testing with OEM partners, IP portfolio expansion, and team growth.",
+      "Sicona has received CSIRO co-investment and letters of intent from two Tier-1 battery cell manufacturers. The company's Australian-origin IP and silicon feedstock provide a critical-minerals angle, reducing supply chain exposure to offshore processing. As battery technology becomes central to the energy transition, Sicona's position in the upstream materials supply chain represents a strategic enabling-technology investment.",
     investmentHighlights: [
       "Breakthrough silicon composite anode achieving >800 Wh/L energy density",
       "Australian-origin IP, developed from UNSW research",
@@ -428,12 +428,12 @@ export const opportunities: Opportunity[] = [
     expectedLiquidity: null,
     distributionFrequency: "Semi-annual",
     expectedMaturity: "7–10 years",
-    closeDate: null,
+    closeDate: "2026-12-31",
     minimumInvestable: { amount: 100000, currency: "AUD" },
     capitalRequirement:
-      "SVA is preparing a dedicated fund targeting affordable housing for older women at risk of homelessness, with a target raise of $40m AUD.",
+      "Social Ventures Australia (SVA) is establishing a dedicated impact fund to address the acute shortage of affordable housing for women over 55 experiencing or at risk of housing insecurity. This cohort represents the fastest-growing segment of homelessness in Australia, driven by relationship breakdown, superannuation inequality, and limited access to social housing. The fund will acquire and develop affordable rental housing stock structured to deliver below-market rents to eligible tenants while generating a risk-adjusted return for investors.",
     useOfProceeds:
-      "Acquisition and development of affordable rental housing stock, structured to deliver below-market rents to eligible tenants while generating a risk-adjusted financial return for investors.",
+      "SVA brings an established track record in social-outcomes-linked investment structures and will measure tenancy stability, housing stress reduction, and community integration using an independent outcomes framework developed with ARTD Consultants. The fund is in discussions with state government co-funders and is aligned with the National Housing Finance and Investment Corporation (NHFIC) framework. Impact KPIs will be independently assured on a bi-annual basis.",
     investmentHighlights: [
       "Addresses the fastest-growing homelessness cohort in Australia: women 55+",
       "SVA's track record in social-outcomes-linked investment structures",
