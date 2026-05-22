@@ -131,15 +131,8 @@ function FieldRow({ label, value }: { label: string; value: string | null }) {
   );
 }
 
-const intensityConfig = {
-  High:        { dots: 3, label: "High" },
-  Moderate:    { dots: 2, label: "Moderate" },
-  Exploratory: { dots: 1, label: "Exploratory" },
-};
-
 function OpportunityCard({ opp }: { opp: Opportunity }) {
   const { accent } = opp.heroPalette;
-  const intensity = opp.impactIntensity ? intensityConfig[opp.impactIntensity] : null;
 
   return (
     <Link
@@ -213,29 +206,6 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
               {tag}
             </span>
           ))}
-        </div>
-
-        {/* Impact intensity */}
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] text-white/30 uppercase tracking-wider font-medium">Impact intensity</span>
-          {intensity ? (
-            <span className="flex items-center gap-1">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <span
-                  key={i}
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{
-                    backgroundColor: i < intensity.dots ? accent : "rgba(255,255,255,0.12)",
-                  }}
-                />
-              ))}
-              <span className="text-[10px] ml-1" style={{ color: accent }}>
-                {intensity.label}
-              </span>
-            </span>
-          ) : (
-            <span className="text-[10px] text-white/25 italic">TBC</span>
-          )}
         </div>
 
         {/* Footer: status + Impact Certified — always one line */}

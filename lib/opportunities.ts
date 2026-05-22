@@ -151,15 +151,15 @@ export const opportunities: Opportunity[] = [
   {
     slug: "net-wilton-project",
     status: "live",
-    issuer: "NET (National Electric Trucks)",
-    projectName: "Wilton Zero-Emission Freight Project",
+    issuer: "New Energy Transport",
+    projectName: "Series A, NET",
     subtitle:
       "Australia's first purpose-built zero-emission heavy freight hub — electrifying long-haul transport at scale.",
     sector: "energy-transport",
     geography: "Australia — Wilton, NSW",
     type: "direct-equity",
     assetClass: "Private Equity",
-    stage: "Series B",
+    stage: "Series A",
     issueSize: { amount: 35, currency: "AUD" },
     targetNetReturns: null,
     expectedLiquidity: "Strategic exit or IPO",
@@ -226,7 +226,7 @@ export const opportunities: Opportunity[] = [
       accent: "#4c8af0",
       overlay: "rgba(26,38,64,0.85)",
     },
-    investmentTypeLabel: "Series B",
+    investmentTypeLabel: "Series A",
     tags: ["Zero-Emission Transport", "Climate", "Infrastructure"],
     impactIntensity: "High",
     searchKeywords: [
@@ -245,7 +245,7 @@ export const opportunities: Opportunity[] = [
     slug: "number8bio-series-a",
     status: "coming-soon",
     issuer: "Number8Bio",
-    projectName: "Series A — Methane-Reducing Feed Supplement",
+    projectName: "Series A, Number8Bio",
     subtitle:
       "Proprietary biological feed supplement that measurably reduces enteric methane emissions from ruminant livestock.",
     sector: "agritech",
