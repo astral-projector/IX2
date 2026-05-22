@@ -137,43 +137,43 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
   return (
     <Link
       href={`/portal/opportunities/${opp.slug}`}
-      className="group flex flex-col bg-navy-800 border border-white/8 rounded-sm hover:border-white/20 hover:shadow-lg hover:shadow-black/25 transition-all duration-200 overflow-hidden"
+      className="group flex flex-col bg-navy-800 border border-white/8 rounded-md hover:border-white/20 hover:shadow-xl hover:shadow-black/30 transition-all duration-200 overflow-hidden"
     >
-      {/* Top accent stripe */}
-      <div className="h-0.5 w-full shrink-0" style={{ backgroundColor: accent }} />
+      {/* Top accent stripe — category colour only, 3px */}
+      <div className="h-[3px] w-full shrink-0" style={{ backgroundColor: accent }} />
 
-      <div className="p-5 flex flex-col gap-3.5 flex-1">
-        {/* Header: avatar + issuer + project name */}
-        <div className="flex items-start gap-3">
+      <div className="flex flex-col flex-1">
+
+        {/* Header */}
+        <div className="px-5 pt-5 pb-4 flex items-start gap-3">
           <div
-            className="w-10 h-10 rounded-sm flex items-center justify-center text-white text-xs font-bold shrink-0 mt-0.5"
-            style={{ backgroundColor: opp.heroPalette.base }}
+            className="w-10 h-10 rounded-sm flex items-center justify-center text-white/80 text-xs font-bold shrink-0 mt-0.5 border border-white/8"
+            style={{ backgroundColor: opp.heroPalette.baseDark }}
           >
             {opp.avatarInitials}
           </div>
           <div className="min-w-0 flex-1">
-            <div className="text-xs text-white/40 mb-0.5 truncate">{opp.issuer}</div>
-            <div className="text-sm font-semibold text-white leading-snug line-clamp-2 group-hover:text-brand-green transition-colors">
+            <div className="text-[11px] text-white/35 mb-1 font-medium tracking-wide truncate">
+              {opp.issuer}
+            </div>
+            <div className="text-sm font-semibold text-white leading-snug line-clamp-2 group-hover:text-brand-green transition-colors duration-200">
               {opp.projectName}
             </div>
           </div>
         </div>
 
-        {/* Investment type label */}
-        <div className="flex items-center gap-2">
-          <span
-            className="text-[11px] font-medium px-2 py-0.5 rounded-sm border"
-            style={{ color: accent, borderColor: `${accent}35`, background: `${accent}10` }}
-          >
+        {/* Type badges */}
+        <div className="px-5 pb-4 flex items-center gap-2">
+          <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-sm border text-brand-green border-brand-green/25 bg-brand-green/[0.07]">
             {opp.investmentTypeLabel}
           </span>
-          <span className="text-[11px] text-white/30 border border-white/10 px-2 py-0.5 rounded-sm">
+          <span className="text-[11px] text-white/30 border border-white/8 px-2.5 py-0.5 rounded-sm">
             {opp.assetClass}
           </span>
         </div>
 
-        {/* Key fields grid: 4 fields, 2 columns */}
-        <div className="grid grid-cols-2 gap-x-4 gap-y-3 bg-navy-900/60 rounded-sm p-3 border border-white/5">
+        {/* Key facts */}
+        <div className="mx-5 mb-4 grid grid-cols-2 gap-x-5 gap-y-3.5 border-t border-b border-white/6 py-4">
           <FieldRow label="Issue Size" value={formatCurrency(opp.issueSize.amount, opp.issueSize.currency)} />
           <FieldRow
             label="Min. Investment"
@@ -188,45 +188,44 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
         </div>
 
         {/* Positive Pursuit */}
-        <div
-          className="flex items-center gap-2 px-2.5 py-1.5 rounded-sm text-xs font-medium"
-          style={{ color: accent, background: `${accent}14` }}
-        >
-          <span className="font-mono text-[10px] opacity-70">{opp.primaryPositivePursuit.code}</span>
-          <span>{opp.primaryPositivePursuit.label}</span>
+        <div className="px-5 mb-3.5 flex items-baseline gap-2">
+          <span className="font-mono text-[10px] font-semibold text-brand-green/50 shrink-0">
+            {opp.primaryPositivePursuit.code}
+          </span>
+          <span className="text-[11px] text-brand-green/75 leading-snug">
+            {opp.primaryPositivePursuit.label}
+          </span>
         </div>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1.5">
+        <div className="px-5 mb-4 flex flex-wrap gap-1.5">
           {opp.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] px-2 py-0.5 rounded-sm border border-white/10 text-white/40"
+              className="text-[10px] px-2 py-0.5 rounded-sm border border-white/8 text-white/28"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Footer: status + Impact Certified — always one line */}
-        <div className="flex items-center gap-2 pt-1 border-t border-white/8 overflow-hidden mt-auto">
+        {/* Footer */}
+        <div className="mt-auto px-5 py-3 border-t border-white/6 flex items-center gap-2">
           {opp.status === "live" ? (
-            <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-emerald-900/40 text-emerald-400 border border-emerald-700/40 font-medium shrink-0">
+            <span className="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-900/30 text-emerald-400 border border-emerald-700/30 font-medium shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               Live
             </span>
           ) : (
-            <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-900/30 text-amber-400 border border-amber-700/30 font-medium shrink-0">
-              Soon
+            <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-white/5 text-white/35 border border-white/10 font-medium shrink-0">
+              Coming soon
             </span>
           )}
-          <span
-            className="ml-auto text-[11px] px-2 py-0.5 rounded-full border font-medium shrink-0"
-            style={{ color: accent, borderColor: `${accent}35`, background: `${accent}10` }}
-          >
+          <span className="ml-auto text-[11px] px-2.5 py-0.5 rounded-full border font-medium shrink-0 text-brand-green border-brand-green/25 bg-brand-green/[0.07]">
             Impact Certified
           </span>
         </div>
+
       </div>
     </Link>
   );

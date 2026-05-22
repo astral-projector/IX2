@@ -91,8 +91,8 @@ export const opportunities: Opportunity[] = [
       label: "Ecosystems are restored",
     },
     secondaryPositivePursuit: {
-      code: "PP07",
-      label: "Greenhouse gases are removed",
+      code: "PP03",
+      label: "Others contribute less to water stress",
     },
     sdgAlignment: ["SDG 6", "SDG 13", "SDG 15"],
     theoryOfChange: {
@@ -179,12 +179,12 @@ export const opportunities: Opportunity[] = [
       "Scalable hub model — Wilton as first of planned national network",
     ],
     primaryPositivePursuit: {
-      code: "PP07",
-      label: "Greenhouse gases are removed",
+      code: "PP06",
+      label: "Others generate fewer greenhouse gas emissions",
     },
     secondaryPositivePursuit: {
-      code: "PP11",
-      label: "Clean energy is used",
+      code: "PP01",
+      label: "Others depend less on non-renewable energy",
     },
     sdgAlignment: ["SDG 7", "SDG 9", "SDG 13"],
     theoryOfChange: {
@@ -272,8 +272,8 @@ export const opportunities: Opportunity[] = [
       "Founder team includes AgResearch NZ alumni",
     ],
     primaryPositivePursuit: {
-      code: "PP07",
-      label: "Greenhouse gases are removed",
+      code: "PP06",
+      label: "Others generate fewer greenhouse gas emissions",
     },
     sdgAlignment: ["SDG 2", "SDG 13"],
     theoryOfChange: {
@@ -356,12 +356,12 @@ export const opportunities: Opportunity[] = [
       "Critical minerals angle: Australian silicon feedstock reduces supply chain exposure",
     ],
     primaryPositivePursuit: {
-      code: "PP11",
-      label: "Clean energy is used",
+      code: "PP01",
+      label: "Others depend less on non-renewable energy",
     },
     secondaryPositivePursuit: {
-      code: "PP07",
-      label: "Greenhouse gases are removed",
+      code: "PP06",
+      label: "Others generate fewer greenhouse gas emissions",
     },
     sdgAlignment: ["SDG 7", "SDG 9", "SDG 12"],
     theoryOfChange: {
@@ -421,7 +421,7 @@ export const opportunities: Opportunity[] = [
     sector: "social-housing",
     geography: "Australia (metro + peri-urban)",
     type: "fund",
-    assetClass: "Private Credit / Impact",
+    assetClass: "Private Credit",
     stage: "Pre-launch",
     issueSize: { amount: 40, currency: "AUD" },
     targetNetReturns: null,
@@ -443,11 +443,11 @@ export const opportunities: Opportunity[] = [
     ],
     primaryPositivePursuit: {
       code: "PP16",
-      label: "People are safe from harm",
+      label: "Health and safety are universally assured",
     },
     secondaryPositivePursuit: {
-      code: "PP14",
-      label: "Communities are thriving",
+      code: "PP17",
+      label: "People's capabilities are strengthened",
     },
     sdgAlignment: ["SDG 1", "SDG 10", "SDG 11"],
     theoryOfChange: {
@@ -483,7 +483,7 @@ export const opportunities: Opportunity[] = [
       accent: "#d4648a",
       overlay: "rgba(42,21,32,0.85)",
     },
-    investmentTypeLabel: "Private Credit Fund",
+    investmentTypeLabel: "Fund",
     tags: ["Social Housing", "Community", "Inclusion"],
     impactIntensity: "High",
     searchKeywords: [
