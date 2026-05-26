@@ -132,21 +132,25 @@ function MetricCell({ label, value }: { label: string; value: string | null }) {
 }
 
 function OpportunityCard({ opp }: { opp: Opportunity }) {
-  const { accent, baseDark } = opp.heroPalette;
-  const showReturn = opp.targetNetReturns !== null;
+  const { accent } = opp.heroPalette;
 
   return (
     <Link
       href={`/portal/opportunities/${opp.slug}`}
       className="group flex flex-col bg-navy-800 border border-white/8 rounded-md hover:border-white/18 hover:-translate-y-px hover:shadow-xl hover:shadow-black/40 transition-all duration-200 overflow-hidden"
     >
-      {/* Thick accent stripe */}
+      {/* Thick accent stripe + sector label */}
       <div className="h-1 w-full shrink-0" style={{ backgroundColor: accent }} />
+      <div className="px-5 pt-2.5">
+        <span className="text-[9px] uppercase tracking-widest font-semibold" style={{ color: accent }}>
+          {sectorLabels[opp.sector]}
+        </span>
+      </div>
 
-      <div className="flex flex-col flex-1 p-5 gap-4">
+      <div className="flex flex-col flex-1 px-5 pt-2 pb-0 gap-4">
 
         {/* Header */}
-        <div className="flex items-start justify-between gap-2">
+        <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 mb-1.5">
               <span className="text-[10px] font-medium tracking-wide text-white/35 truncate">
@@ -159,15 +163,21 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
                 </span>
               )}
             </div>
-            <h3 className="text-sm font-semibold text-white leading-snug line-clamp-2 group-hover:text-brand-green transition-colors duration-200">
+            <h3
+              className="text-sm font-semibold text-white leading-snug line-clamp-2 group-hover:text-brand-green transition-colors duration-200"
+              style={{ minHeight: "2.6rem" }}
+            >
               {opp.projectName}
             </h3>
           </div>
+          {/* PP badge replaces avatar initials */}
           <div
-            className="w-9 h-9 rounded-sm flex items-center justify-center text-white/65 text-[11px] font-bold shrink-0 border border-white/8"
-            style={{ backgroundColor: baseDark }}
+            className="shrink-0 mt-0.5 px-2 py-1 rounded-sm border text-center"
+            style={{ borderColor: `${accent}35`, backgroundColor: `${accent}10` }}
           >
-            {opp.avatarInitials}
+            <span className="font-mono text-[10px] font-bold block" style={{ color: accent }}>
+              {opp.primaryPositivePursuit.code}
+            </span>
           </div>
         </div>
 
@@ -184,26 +194,20 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
           </span>
         </div>
 
-        {/* Metric grid */}
+        {/* Metric grid — always shows Target Return */}
         <div className="grid grid-cols-2 gap-px bg-white/6 rounded-sm overflow-hidden">
           <MetricCell label="Raise" value={formatCurrency(opp.issueSize.amount, opp.issueSize.currency)} />
           <MetricCell
             label="Min. Investment"
             value={opp.minimumInvestable ? formatMinInvestment(opp.minimumInvestable.amount, opp.minimumInvestable.currency) : null}
           />
-          <MetricCell
-            label={showReturn ? "Target Return" : "Liquidity"}
-            value={showReturn ? opp.targetNetReturns : opp.expectedLiquidity}
-          />
+          <MetricCell label="Target Return" value={opp.targetNetReturns} />
           <MetricCell label="Term" value={opp.expectedMaturity} />
         </div>
 
         {/* Positive Pursuit */}
         <div className="flex items-start gap-2">
-          <span
-            className="w-1.5 h-1.5 rounded-full mt-[3px] shrink-0"
-            style={{ backgroundColor: accent }}
-          />
+          <span className="w-1.5 h-1.5 rounded-full mt-[3px] shrink-0" style={{ backgroundColor: accent }} />
           <div className="min-w-0">
             <span className="font-mono text-[10px] font-semibold text-white/30 mr-1.5">
               {opp.primaryPositivePursuit.code}
@@ -217,15 +221,14 @@ function OpportunityCard({ opp }: { opp: Opportunity }) {
       </div>
 
       {/* Footer */}
-      <div className="px-5 py-3 border-t border-white/6 flex items-center gap-1.5">
-        {opp.tags.slice(0, 2).map((tag) => (
-          <span
-            key={tag}
-            className="text-[10px] px-2 py-0.5 rounded-sm border border-white/8 text-white/28 truncate max-w-[100px]"
-          >
-            {tag}
+      <div className="px-5 py-3 mt-4 border-t border-white/6 flex items-center gap-2">
+        {opp.status === "live" ? (
+          <span className="text-[10px] text-white/35">Closes Dec 2026</span>
+        ) : (
+          <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-white/35 border border-white/10 font-medium">
+            Coming soon
           </span>
-        ))}
+        )}
         <div className="ml-auto flex items-center gap-1 text-[10px] font-medium text-brand-green shrink-0">
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
             <path d="M2 5.5l2 2L8 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -277,11 +280,16 @@ function TaxonomyPanel({
                     ? "bg-brand-green/20 border-brand-green/50 text-brand-green font-semibold"
                     : isHighlighted
                     ? "bg-brand-green/8 border-brand-green/30 text-brand-green/70"
-                    : "border-white/10 text-white/40 hover:border-white/25 hover:text-white/65",
+                    : pp.available
+                    ? "border-brand-green/20 text-white/55 bg-brand-green/[0.04] hover:border-brand-green/40 hover:text-white/75"
+                    : "border-white/8 text-white/28 hover:border-white/18 hover:text-white/45",
                 ].join(" ")}
               >
-                <span className="font-mono text-[10px] opacity-80 shrink-0">{pp.code}</span>
+                <span className={["font-mono text-[10px] shrink-0", isActive ? "opacity-100" : pp.available ? "text-brand-green/50" : "opacity-50"].join(" ")}>{pp.code}</span>
                 <span className="text-[10px]">{pp.label}</span>
+                {pp.available && !isActive && (
+                  <span className="w-1 h-1 rounded-full bg-brand-green/50 shrink-0" />
+                )}
               </button>
             );
           })}

@@ -10,6 +10,8 @@ import {
   BarChart3,
   MessageSquare,
   Settings,
+  BookOpen,
+  FlaskConical,
 } from "lucide-react";
 import { brand } from "@/lib/brand";
 import { cn } from "@/lib/utils";
@@ -41,6 +43,13 @@ const sections: { heading: string; items: NavItem[] }[] = [
     items: [
       { label: "My Enquiries", href: "/portal/enquiries", icon: MessageSquare },
       { label: "Settings", href: "/portal/settings", icon: Settings },
+    ],
+  },
+  {
+    heading: "Learn",
+    items: [
+      { label: "Positive Pursuits", href: "/portal/learn/positive-pursuits", icon: BookOpen },
+      { label: "Methodology", href: "/portal/learn/methodology", icon: FlaskConical },
     ],
   },
 ];

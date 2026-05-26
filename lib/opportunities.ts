@@ -1,5 +1,6 @@
 export type Opportunity = {
   slug: string;
+  heroImage?: string;
   status: "live" | "coming-soon";
   issuer: string;
   projectName: string;
@@ -66,7 +67,7 @@ export const opportunities: Opportunity[] = [
     sector: "nature-based",
     geography: "Australia — Murray-Darling Basin",
     type: "fund",
-    assetClass: "Fund",
+    assetClass: "Open-Ended",
     stage: "Open",
     issueSize: { amount: 50, currency: "AUD" },
     targetNetReturns: "7–9% p.a. (net)",
@@ -134,6 +135,7 @@ export const opportunities: Opportunity[] = [
       accent: "#4caf82",
       overlay: "rgba(26,58,42,0.82)",
     },
+    heroImage: "https://images.unsplash.com/photo-1500258571355-332da5cb07aa?auto=format&fit=crop&w=1920&q=80",
     investmentTypeLabel: "Open-ended Fund",
     tags: ["Nature-Based", "Environmental Flows", "Water"],
     impactIntensity: "High",
@@ -152,7 +154,7 @@ export const opportunities: Opportunity[] = [
     slug: "net-wilton-project",
     status: "live",
     issuer: "New Energy Transport",
-    projectName: "Series A, NET",
+    projectName: "Series A Equity Raise",
     subtitle:
       "Australia's first purpose-built zero-emission heavy freight hub — electrifying long-haul transport at scale.",
     sector: "energy-transport",
@@ -223,9 +225,10 @@ export const opportunities: Opportunity[] = [
     heroPalette: {
       base: "#162535",
       baseDark: "#0f1a26",
-      accent: "#5b8fb5",
+      accent: "#5aacda",
       overlay: "rgba(22,37,53,0.85)",
     },
+    heroImage: "https://images.unsplash.com/photo-1592805144716-feeccccef5ac?auto=format&fit=crop&w=1920&q=80",
     investmentTypeLabel: "Series A",
     tags: ["Zero-Emission Transport", "Climate", "Infrastructure"],
     impactIntensity: "High",
@@ -245,7 +248,7 @@ export const opportunities: Opportunity[] = [
     slug: "number8bio-series-a",
     status: "coming-soon",
     issuer: "Number8Bio",
-    projectName: "Series A, Number8Bio",
+    projectName: "Series A Equity Raise",
     subtitle:
       "Proprietary biological feed supplement that measurably reduces enteric methane emissions from ruminant livestock.",
     sector: "agritech",
@@ -309,6 +312,7 @@ export const opportunities: Opportunity[] = [
       accent: "#4caf82",
       overlay: "rgba(26,58,42,0.82)",
     },
+    heroImage: "https://images.unsplash.com/photo-1500595046743-cd271d694e30?auto=format&fit=crop&w=1920&q=80",
     investmentTypeLabel: "Series A",
     tags: ["Agritech", "Climate", "Agriculture"],
     impactIntensity: "Moderate",
@@ -329,7 +333,7 @@ export const opportunities: Opportunity[] = [
     slug: "sicona-series-b",
     status: "coming-soon",
     issuer: "Sicona Battery Technologies",
-    projectName: "Series B, Sicona",
+    projectName: "Series B Equity Raise",
     subtitle:
       "High-energy-density silicon anode materials enabling the next generation of lithium-ion batteries for EVs and grid storage.",
     sector: "advanced-materials",
@@ -394,9 +398,10 @@ export const opportunities: Opportunity[] = [
     heroPalette: {
       base: "#162535",
       baseDark: "#0f1a26",
-      accent: "#5b8fb5",
+      accent: "#5aacda",
       overlay: "rgba(22,37,53,0.85)",
     },
+    heroImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80",
     investmentTypeLabel: "Series B",
     tags: ["Advanced Materials", "Clean Energy", "Climate"],
     impactIntensity: "Moderate",
@@ -478,11 +483,12 @@ export const opportunities: Opportunity[] = [
     assuranceProvider: null,
     avatarInitials: "SV",
     heroPalette: {
-      base: "#2a1d14",
-      baseDark: "#1c1410",
-      accent: "#c07a52",
-      overlay: "rgba(42,29,20,0.85)",
+      base: "#2e2412",
+      baseDark: "#1e1808",
+      accent: "#d4a45a",
+      overlay: "rgba(46,36,18,0.85)",
     },
+    heroImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&w=1920&q=80",
     investmentTypeLabel: "Fund",
     tags: ["Social Housing", "Community", "Inclusion"],
     impactIntensity: "High",
@@ -530,7 +536,7 @@ export const sectorLabels: Record<Opportunity["sector"], string> = {
 
 export const sectorColors: Record<Opportunity["sector"], string> = {
   "nature-based": "#1a3a2a",
-  "social-housing": "#2a1d14",
+  "social-housing": "#2e2412",
   "energy-transport": "#162535",
   agritech: "#1a3a2a",
   "advanced-materials": "#162535",
