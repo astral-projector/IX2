@@ -4,58 +4,6 @@ import { JohnWestCounter } from "@/components/JohnWestCounter";
 import { ContactForm } from "@/components/ContactForm";
 import { brand } from "@/lib/brand";
 
-const fiveCapitals = [
-  {
-    name: "Financial capital",
-    icon: "◈",
-    example: "Durable returns across market cycles and generations",
-    color: "#1e3a5f",
-  },
-  {
-    name: "Human capital",
-    icon: "◉",
-    example: "Health, knowledge, and capability over time",
-    color: "#1a2d4a",
-  },
-  {
-    name: "Social capital",
-    icon: "◎",
-    example: "Relationships, reputation, and community standing",
-    color: "#1e3050",
-  },
-  {
-    name: "Intellectual capital",
-    icon: "◇",
-    example: "Values, wisdom, and long-term purpose",
-    color: "#1a2848",
-  },
-  {
-    name: "Spiritual capital",
-    icon: "◯",
-    example: "Meaning, legacy, and a sense of wider purpose",
-    color: "#18243f",
-  },
-];
-
-const valueProps = [
-  {
-    heading: "Clarity at origination",
-    body: "Every issuer commits to a defined Theory of Change, specific outcome metrics, and a reporting cadence before listing. Investors see the impact thesis in structural terms, not just narrative.",
-  },
-  {
-    heading: "Verification over time",
-    body: "Impact KPIs are independently assured by third parties on a cadence agreed in investor documents. The assurance framework is set at raise, not retrofitted after the fact.",
-  },
-  {
-    heading: "Comparable across asset classes",
-    body: "A common Positive Pursuits taxonomy makes it possible to compare private equity, credit, real assets, and funds on impact terms alongside risk and return.",
-  },
-  {
-    heading: "Lower friction for issuers",
-    body: "ImpactX is designed to make structuring an impact thesis practical, without requiring a large dedicated team or significant additional reporting infrastructure.",
-  },
-];
-
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-navy-900">
@@ -80,7 +28,7 @@ export default function HomePage() {
         />
         <div className="relative max-w-7xl mx-auto px-6 py-32 md:py-48">
           <div className="max-w-3xl">
-<h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-white leading-[1.06] tracking-tight mb-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-white leading-[1.06] tracking-tight mb-6">
               Trustworthy Infrastructure for Impact Capital
             </h1>
             <p className="text-lg text-white/55 leading-relaxed mb-10 max-w-xl">
@@ -136,86 +84,119 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FIVE CAPITALS ── */}
+      {/* ── WHAT WE COVER ── */}
       <section className="py-24 bg-navy-950">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-xl mb-12">
+          <div className="max-w-2xl mb-12">
             <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
-              A broader view of value
+              What we cover
             </span>
             <h2 className="text-4xl font-display font-light text-white leading-tight mb-4">
-              Financial return is one dimension.
+              Impact-verified opportunities across private alternatives.
             </h2>
             <p className="text-white/55 leading-relaxed">
-              The{" "}
-              <a
-                href="https://jehjf.org/wp-content/uploads/2023/06/Five-Capitals-One-Page-JEHJF.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 underline underline-offset-2 hover:text-white/90 transition-colors"
-              >
-                five-capitals framework
-              </a>{" "}
-              offers a way to think about wealth beyond financial capital alone.
+              We surface opportunities across private alternatives, each held to
+              the same verification standard before listing.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {fiveCapitals.map((capital) => (
-              <div
-                key={capital.name}
-                className="rounded-sm p-5 border border-white/8 hover:border-white/15 transition-colors"
-                style={{ backgroundColor: capital.color + "60" }}
+          {/* Asset class labels */}
+          <div className="flex flex-wrap items-center gap-3 mb-14">
+            {["Private equity", "Private credit", "Real assets", "Funds"].map((label) => (
+              <span
+                key={label}
+                className="text-sm text-white/60 px-4 py-2 border border-white/10 rounded-sm"
               >
-                <div
-                  className="w-8 h-8 rounded-sm flex items-center justify-center mb-3 font-display text-lg border border-white/10"
-                  style={{ backgroundColor: capital.color, color: "#e8edf5" }}
-                >
-                  {capital.icon}
-                </div>
-                <h3 className="font-semibold text-white text-sm mb-1.5 leading-snug">
-                  {capital.name}
-                </h3>
-                <p className="text-xs text-white/50 leading-relaxed">
-                  {capital.example}
-                </p>
-              </div>
+                {label}
+              </span>
             ))}
           </div>
-          <p className="mt-5 text-xs text-white/30">
-            Reference: Jay E. Hughes Jr.,{" "}
-            <em>Family Wealth: Keeping It in the Family</em>.
-          </p>
+
+          {/* How we verify */}
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-widest text-white/35 font-semibold mb-6">
+              How we verify
+            </p>
+            <ol className="space-y-8">
+              <li className="flex gap-5">
+                <span className="text-xs font-bold text-brand-green font-mono mt-0.5 shrink-0 w-5">
+                  01
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-white mb-1.5">
+                    Clarity at origination
+                  </p>
+                  <p className="text-sm text-white/55 leading-relaxed">
+                    Every issuer commits to a defined Theory of Change, specific
+                    outcome metrics, and a reporting cadence before listing. The
+                    impact thesis is stated in structural terms, not narrative.
+                  </p>
+                </div>
+              </li>
+              <li className="flex gap-5">
+                <span className="text-xs font-bold text-brand-green font-mono mt-0.5 shrink-0 w-5">
+                  02
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-white mb-1.5">
+                    Independent assurance over time
+                  </p>
+                  <p className="text-sm text-white/55 leading-relaxed">
+                    Impact KPIs are assured by third parties on a cadence set in
+                    investor documents at raise, not retrofitted after the fact.
+                  </p>
+                </div>
+              </li>
+              <li className="flex gap-5">
+                <span className="text-xs font-bold text-brand-green font-mono mt-0.5 shrink-0 w-5">
+                  03
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-white mb-1.5">
+                    Comparable across asset classes
+                  </p>
+                  <p className="text-sm text-white/55 leading-relaxed">
+                    A common Positive Pursuits taxonomy makes impact comparable
+                    across private equity, credit, real assets, and funds,
+                    alongside risk and return.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 
-      {/* ── WHAT WE DO ── */}
+      {/* ── PHILOSOPHY ── */}
       <section className="py-24 bg-navy-900">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-xl mb-12">
+          <div className="max-w-2xl">
             <span className="text-xs uppercase tracking-widest text-brand-green font-medium mb-4 block">
-              What we offer
+              A broader view of value
             </span>
-            <h2 className="text-4xl font-display font-light text-white leading-tight">
-              From impact claims to impact confidence.
+            <h2 className="text-4xl font-display font-light text-white leading-tight mb-8">
+              Financial return is one dimension.
             </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/8 border border-white/8 rounded-sm overflow-hidden">
-            {valueProps.map((vp, i) => (
-              <div
-                key={i}
-                className="bg-navy-900 p-8 hover:bg-navy-800 transition-colors"
-              >
-                <div className="w-6 h-0.5 bg-brand-green mb-5" />
-                <h3 className="font-semibold text-white mb-3 leading-snug">
-                  {vp.heading}
-                </h3>
-                <p className="text-sm text-white/55 leading-relaxed">
-                  {vp.body}
-                </p>
-              </div>
-            ))}
+            <div className="space-y-5 text-white/60 leading-relaxed">
+              <p>
+                Most capital is managed to a single measure. For families
+                thinking in generations, that measure is too narrow.
+              </p>
+              <p>
+                A family&apos;s wealth is also the knowledge it carries, the
+                relationships it can draw on, the institutions it builds, and the
+                sense of purpose it hands down. These forms of capital compound
+                or erode just as money does, and they are far harder to rebuild
+                once lost. Stewardship means tending to all of them, not trading
+                one against the rest.
+              </p>
+              <p>
+                That conviction shapes what we list. The opportunities on ImpactX
+                are structured so that financial return and wider value are
+                accounted for together, with the same rigour, rather than treated
+                as a choice between doing well and doing good.
+              </p>
+            </div>
           </div>
         </div>
       </section>
