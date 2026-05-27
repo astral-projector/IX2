@@ -117,18 +117,50 @@ export default function HomePage() {
             <p className="text-xs uppercase tracking-widest text-white/35 font-semibold mb-4">
               How we verify
             </p>
-            <div className="grid sm:grid-cols-3 gap-3">
-              {[
-                { n: "01", title: "Clarity at origination",       body: "Issuers commit to a Theory of Change, outcome metrics, and reporting cadence before listing." },
-                { n: "02", title: "Independent assurance",        body: "Impact KPIs are assured by third parties on a cadence set at raise, not retrofitted." },
-                { n: "03", title: "Comparable across classes",    body: "A common Positive Pursuits taxonomy makes impact comparable alongside risk and return." },
-              ].map(({ n, title, body }) => (
-                <div key={n} className="border border-white/10 rounded-sm px-5 py-4 bg-white/[0.03]">
-                  <span className="font-mono text-xs font-bold text-brand-green block mb-2">{n}</span>
-                  <p className="text-sm font-semibold text-white mb-1.5">{title}</p>
-                  <p className="text-sm text-white/50 leading-relaxed">{body}</p>
+            <div className="grid sm:grid-cols-3 gap-3 items-stretch">
+
+              {/* 01 — outer card */}
+              <div className="border-t-2 border-white/15 pt-5 pb-6 px-1 flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-white/30">01</span>
+                  <span className="text-[9px] uppercase tracking-widest text-white/25 font-semibold">What we require</span>
                 </div>
-              ))}
+                <h3 className="text-2xl font-display font-light text-white leading-tight">
+                  Clarity at origination
+                </h3>
+                <p className="text-sm text-white/50 leading-relaxed">
+                  Issuers commit to a Theory of Change, outcome metrics, and reporting cadence before listing.
+                </p>
+              </div>
+
+              {/* 02 — filled centre card */}
+              <div className="rounded-sm bg-brand-green/[0.12] border border-brand-green/25 px-5 py-5 flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-brand-green/50">02</span>
+                  <span className="text-[9px] uppercase tracking-widest text-brand-green/60 font-semibold">How it&apos;s checked</span>
+                </div>
+                <h3 className="text-2xl font-display font-light text-white leading-tight">
+                  Independent assurance
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed">
+                  Impact KPIs are assured by third parties on a cadence set at raise, not retrofitted.
+                </p>
+              </div>
+
+              {/* 03 — outer card */}
+              <div className="border-t-2 border-white/15 pt-5 pb-6 px-1 flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-white/30">03</span>
+                  <span className="text-[9px] uppercase tracking-widest text-white/25 font-semibold">Why it compares</span>
+                </div>
+                <h3 className="text-2xl font-display font-light text-white leading-tight">
+                  Comparable across classes
+                </h3>
+                <p className="text-sm text-white/50 leading-relaxed">
+                  A common Positive Pursuits taxonomy makes impact comparable alongside risk and return.
+                </p>
+              </div>
+
             </div>
           </div>
         </div>
