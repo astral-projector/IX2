@@ -113,56 +113,23 @@ export default function HomePage() {
           </div>
 
           {/* How we verify */}
-          <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-widest text-white/35 font-semibold mb-6">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-white/35 font-semibold mb-4">
               How we verify
             </p>
-            <ol className="space-y-8">
-              <li className="flex gap-5">
-                <span className="text-xs font-bold text-brand-green font-mono mt-0.5 shrink-0 w-5">
-                  01
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-white mb-1.5">
-                    Clarity at origination
-                  </p>
-                  <p className="text-sm text-white/55 leading-relaxed">
-                    Every issuer commits to a defined Theory of Change, specific
-                    outcome metrics, and a reporting cadence before listing. The
-                    impact thesis is stated in structural terms, not narrative.
-                  </p>
+            <div className="grid sm:grid-cols-3 gap-3">
+              {[
+                { n: "01", title: "Clarity at origination",       body: "Issuers commit to a Theory of Change, outcome metrics, and reporting cadence before listing." },
+                { n: "02", title: "Independent assurance",        body: "Impact KPIs are assured by third parties on a cadence set at raise, not retrofitted." },
+                { n: "03", title: "Comparable across classes",    body: "A common Positive Pursuits taxonomy makes impact comparable alongside risk and return." },
+              ].map(({ n, title, body }) => (
+                <div key={n} className="border border-white/10 rounded-sm px-5 py-4 bg-white/[0.03]">
+                  <span className="font-mono text-xs font-bold text-brand-green block mb-2">{n}</span>
+                  <p className="text-sm font-semibold text-white mb-1.5">{title}</p>
+                  <p className="text-sm text-white/50 leading-relaxed">{body}</p>
                 </div>
-              </li>
-              <li className="flex gap-5">
-                <span className="text-xs font-bold text-brand-green font-mono mt-0.5 shrink-0 w-5">
-                  02
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-white mb-1.5">
-                    Independent assurance over time
-                  </p>
-                  <p className="text-sm text-white/55 leading-relaxed">
-                    Impact KPIs are assured by third parties on a cadence set in
-                    investor documents at raise, not retrofitted after the fact.
-                  </p>
-                </div>
-              </li>
-              <li className="flex gap-5">
-                <span className="text-xs font-bold text-brand-green font-mono mt-0.5 shrink-0 w-5">
-                  03
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-white mb-1.5">
-                    Comparable across asset classes
-                  </p>
-                  <p className="text-sm text-white/55 leading-relaxed">
-                    A common Positive Pursuits taxonomy makes impact comparable
-                    across private equity, credit, real assets, and funds,
-                    alongside risk and return.
-                  </p>
-                </div>
-              </li>
-            </ol>
+              ))}
+            </div>
           </div>
         </div>
       </section>
