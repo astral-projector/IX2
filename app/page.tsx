@@ -95,21 +95,10 @@ export default function HomePage() {
               Impact-verified opportunities across private alternatives.
             </h2>
             <p className="text-white/55 leading-relaxed">
-              We surface opportunities across private alternatives, each held to
-              the same verification standard before listing.
+              We surface opportunities across private alternatives, including
+              private equity, private credit, real assets, and funds, each held
+              to the same verification standard before listing.
             </p>
-          </div>
-
-          {/* Asset class labels */}
-          <div className="flex flex-wrap items-center gap-3 mb-14">
-            {["Private equity", "Private credit", "Real assets", "Funds"].map((label) => (
-              <span
-                key={label}
-                className="text-sm text-white/60 px-4 py-2 border border-white/10 rounded-sm"
-              >
-                {label}
-              </span>
-            ))}
           </div>
 
           {/* How we verify */}
@@ -118,49 +107,20 @@ export default function HomePage() {
               How we verify
             </p>
             <div className="grid sm:grid-cols-3 gap-3 items-stretch">
-
-              {/* 01 — outer card */}
-              <div className="border-t-2 border-white/15 pt-5 pb-6 px-1 flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] text-white/30">01</span>
-                  <span className="text-[9px] uppercase tracking-widest text-white/25 font-semibold">What we require</span>
+              {[
+                { n: "01", label: "What we require",   heading: "Clarity at origination",    body: "Issuers commit to a Theory of Change, outcome metrics, and reporting cadence before listing." },
+                { n: "02", label: "How it’s checked", heading: "Independent assurance",     body: "Impact KPIs are assured by third parties on a cadence set at raise, not retrofitted." },
+                { n: "03", label: "Why it compares",   heading: "Comparable across classes", body: "A common Positive Pursuits taxonomy makes impact comparable alongside risk and return." },
+              ].map(({ n, label, heading, body }) => (
+                <div key={n} className="border-t-2 border-brand-green/50 pt-5 pb-6 px-1 flex flex-col gap-3">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[11px] text-brand-green/60">{n}</span>
+                    <span className="text-[9px] uppercase tracking-widest text-brand-green/50 font-semibold">{label}</span>
+                  </div>
+                  <h3 className="text-2xl font-display font-light text-white leading-tight">{heading}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{body}</p>
                 </div>
-                <h3 className="text-2xl font-display font-light text-white leading-tight">
-                  Clarity at origination
-                </h3>
-                <p className="text-sm text-white/50 leading-relaxed">
-                  Issuers commit to a Theory of Change, outcome metrics, and reporting cadence before listing.
-                </p>
-              </div>
-
-              {/* 02 — filled centre card */}
-              <div className="rounded-sm bg-brand-green/[0.12] border border-brand-green/25 px-5 py-5 flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] text-brand-green/50">02</span>
-                  <span className="text-[9px] uppercase tracking-widest text-brand-green/60 font-semibold">How it&apos;s checked</span>
-                </div>
-                <h3 className="text-2xl font-display font-light text-white leading-tight">
-                  Independent assurance
-                </h3>
-                <p className="text-sm text-white/60 leading-relaxed">
-                  Impact KPIs are assured by third parties on a cadence set at raise, not retrofitted.
-                </p>
-              </div>
-
-              {/* 03 — outer card */}
-              <div className="border-t-2 border-white/15 pt-5 pb-6 px-1 flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] text-white/30">03</span>
-                  <span className="text-[9px] uppercase tracking-widest text-white/25 font-semibold">Why it compares</span>
-                </div>
-                <h3 className="text-2xl font-display font-light text-white leading-tight">
-                  Comparable across classes
-                </h3>
-                <p className="text-sm text-white/50 leading-relaxed">
-                  A common Positive Pursuits taxonomy makes impact comparable alongside risk and return.
-                </p>
-              </div>
-
+              ))}
             </div>
           </div>
         </div>
